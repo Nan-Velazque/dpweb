@@ -1,11 +1,12 @@
  <?php
- require_once "./control/views_control.php";
+    require_once"./config/config.php";
+    require_once "./control/views_control.php";
 
- $view = new viewsControl();
- $mostrar = $view->getViewControl();
+    $view = new viewsControl();
+    $mostrar = $view->getViewControl();
 
- if ($mostrar =="login" || $mostrar =="404") {
-    require_once "./view/". $mostrar.".php";
-    }else {
-        include $mostar;
- }
+    if ($mostrar == "login" || $mostrar == "404") {
+        require_once "./view/" . $mostrar . ".php";
+    } else {
+        include $mostrar;
+    }
