@@ -7,5 +7,5 @@ const BD_CHARSET = "utff8";
 
 //Ingresar link de proyecto
 const BASE_URL = "";
-
-?>
+//bbb
+?> 
