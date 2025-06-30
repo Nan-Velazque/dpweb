@@ -40,15 +40,9 @@ async function registrarUsuario() {
         if (json.status) { //validamos que json.status sea=true 
             alert(json.msg);
             document.getElementById('frm_user').reset();
-            }else{
-                alert(json.msg);
+        } else {
+            alert(json.msg);
         }
-
-
-
-
-
-
     } catch (e) {
         console.log("Error al registrar Usuario:" + e);
     }
