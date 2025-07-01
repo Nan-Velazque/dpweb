@@ -1,6 +1,6 @@
 <?php
 require_once("../library/conexion.php");
-class usuarioModel
+class UsuarioModel
 {
     private $conexion;
     function __construct()
@@ -10,7 +10,7 @@ class usuarioModel
     }
     public function registrar($nro_identidad, $razon_social, $telefono, $correo, $departamento, $provincia, $distrito, $cod_postal, $direccion, $rol, $password)
     {
-        $consulta = "INSERT INTO persona (nro_identidad, razon_social, telefono, correo, departamento, provincia, distrito, cod_postal, direccion, rol, password) VALUES ('$nro_identidad', '$razon_social', '$telefono', '$correo', '$departamento', '$provincia', '$distrito', '$cod_postal', '$direccion', '$rol', '$password')";
+        $consulta = "INSERT INTO persona (nro_identidad, razon_social, telefono, correo, departamento, provincia, distrito, cod_postal, direccion, rol, password) VALUES ('$nro_identidad', '$razon_social', '$telefono', '$correo', '$departamento', '$provincia', '$distrito',' $cod_postal', '$direccion', '$rol', '$password')";
         $sql = $this->conexion->query($consulta);
         if ($sql) {
             $sql = $this->conexion->insert_id;
@@ -19,8 +19,9 @@ class usuarioModel
         }
         return $sql;
     }
-    public function existePersona($nro_identidad){
-        $consulta = "SELECT * FROM persona WHERE nro_identidad='$nro_identidad'";
+    public function existePersona($nro_identidad)
+    {
+        $consulta = "SELECT *FROM persona WHERE nro_identidad='$nro_identidad'";
         $sql = $this->conexion->query($consulta);
         return $sql->num_rows;
     }

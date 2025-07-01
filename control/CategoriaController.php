@@ -1,31 +1,29 @@
 <?php
-require_once("../model/CategoriaModel.php");
-$objCategoria = new categoriaModel();
-$tipo = $_GET['tipo'];
+require_once("../model/categoriaModel.php");
+header('Content-Type: application/json');
+
+$objcategoria = new CategoriaModel();
+$tipo = $_GET['tipo'] ?? '';
+
 if ($tipo == "registrar") {
-    //print_r($_POST);
+    $nombre = trim($_POST['nombre'] ?? '');
+    $detalle = trim($_POST['detalle'] ?? '');
 
-    $nombre = $_POST['nombre'];
-    $detalle = $_POST['detalle'];
-   
-   
-
-    if ($nombre == "" || $detalle == "" ) {
-
-        $arrResponse = array('status' => false, 'msg' => 'Error , campos vacios');
-    } else {
-        //VALIDACION SI EXISTE PERSONA CON EL MISMO DNI
-        $existeCategoria = $objCategoria->existecategoria($nombre);
-        if ($existeCategoria > 0) {
-            $arrResponse = array('status' => false, 'msg' => 'Error ,nro de documento ya existe');
-        } else {
-            $respuesta = $objCategoria->registrar($nombre, $detalle);
-            if ($respuesta) {
-                $arrResponse = array('status' => true, 'msg' => 'Registrado Corectamente');
-            } else {
-                $arrResponse = array('status' => false, 'msg' => 'Error ,fallo en registro');
-            }
-        }
+    if ($nombre === '' || $detalle === '') {
+        echo json_encode(['status' => false, 'msg' => 'Error: campos vacíos']);
+        exit;
     }
-    echo json_encode($arrResponse);
+
+    $existe = $objcategoria->existeCategoria($nombre);
+    if ($existe > 0) {
+        echo json_encode(['status' => false, 'msg' => 'Error: la categoría ya existe']);
+        exit;
+    }
+
+    $respuesta = $objcategoria->registrar($nombre, $detalle);
+    if ($respuesta > 0) {
+        echo json_encode(['status' => true, 'msg' => 'Categoría registrada correctamente']);
+    } else {
+        echo json_encode(['status' => false, 'msg' => 'Error al registrar en base de datos']);
+    }
 }
