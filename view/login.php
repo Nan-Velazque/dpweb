@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login Creativo</title>
+  <title>Velazque</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -27,7 +28,7 @@
       padding: 40px 30px;
       border-radius: 20px;
       backdrop-filter: blur(12px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
       width: 350px;
       position: relative;
       color: #fff;
@@ -39,6 +40,7 @@
         transform: translateY(-50px);
         opacity: 0;
       }
+
       100% {
         transform: translateY(0);
         opacity: 1;
@@ -113,25 +115,34 @@
       text-decoration: underline;
     }
   </style>
+  <script>
+    const base_url = '<?= BASE_URL; ?>';
+  </script>
   <script src="https://kit.fontawesome.com/a2e8a4d44b.js" crossorigin="anonymous"></script>
+
 </head>
+
 <body>
   <div class="login-container">
     <h2>Bienvenido 🌟</h2>
-    <form action="procesar_login.php" method="POST">
+    <form id="frm_login">
       <div class="input-field">
         <i class="fas fa-user"></i>
-        <input type="text" name="usuario" placeholder="Usuario" required>
-      </div>
-      <div class="input-field">
+        <input type="text" name="usuario" placeholder="Usuario" required
+        id="username" >
+       </div>
+       <div class="input-field">
         <i class="fas fa-lock"></i>
-        <input type="password" name="password" placeholder="Contraseña" required>
+        <input type="password" name="password" placeholder="password" required
+        id="password">
       </div>
-      <button type="submit" class="login-btn">Iniciar Sesión</button>
+      <button type="button" class="login-btn" onclick="iniciar_sesion();">Iniciar Sesion</button>
     </form>
     <div class="extra-text">
       ¿No tienes cuenta? <a href="#">Regístrate</a>
     </div>
   </div>
 </body>
+<script src="<?=BASE_URL; ?>view/function/user.js"></script>
+
 </html>

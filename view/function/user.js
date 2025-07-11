@@ -72,11 +72,34 @@ async function registrarUsuario() {
         if (json.status) {
             alert(json.msg);
             document.getElementById('frm_user').reset();
-        }else{
+        } else {
             alert(json.msg);
         }
     } catch (e) {
         console.log("Error al registrar Usuario:" + e);
     }
 
+}
+
+async function iniciar_sesion() {
+    let Usuario = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    if (Usuario == "" || password == "") {
+        alert("Error, campos vacios!");
+        return;
+    }
+
+    try {
+        const datos = new FormData(frm_login);
+        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=iniciar_sesion', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            body: datos
+        });
+
+    } catch (error) {
+        console.log(error);
+
+    }
 }
