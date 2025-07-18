@@ -34,22 +34,22 @@ if ($tipo == 'registrar') {
             // Registro exitoso
             $arrResponse = array('status' => true, 'msg' => 'Registrado Correctamente');
          } else {
-              // Error al registrar
+            // Error al registrar
             $arrResponse = array('status' => false, 'msg' => 'Error, fallo en registro');
          }
       }
    }
-   echo json_encode($arrResponse);// Devuelve la respuesta en formato JSON
+   echo json_encode($arrResponse); // Devuelve la respuesta en formato JSON
 }
- // Si se solicita iniciar sesión
+// Si se solicita iniciar sesión
 if ($tipo == "iniciar_sesion") {
    // Captura los datos del formulario
    $nro_identidad = $_POST['usuario'];
    $password = $_POST['password'];
-   if ($nro_identidad == "" || $password == "") {// Verifica si hay campos vacíos
+   if ($nro_identidad == "" || $password == "") { // Verifica si hay campos vacíos
       $respuesta = array('status' => false, 'msg' => 'Error, campos vacios');
    } else {
-        // Verifica si el usuario existe en la base de datos
+      // Verifica si el usuario existe en la base de datos
       $existePersona = $objPersona->existePersona($nro_identidad);
       if (!$existePersona) {
 
@@ -75,4 +75,8 @@ if ($tipo == "iniciar_sesion") {
       }
    }
    echo json_encode($respuesta); // Devuelve respuesta JSON
+}
+
+if ($tipo == "ver_usuarios") {
+   echo "recibido por el contralador";
 }

@@ -49,7 +49,7 @@ function validar_form() {
 }
 
 if (document.querySelector('#frm_user')) {// Validar que el formulario con id "frm_user" exista en la página
-     // Envia al controlador PHP usando fetch
+    // Envia al controlador PHP usando fetch
     let frm_user = document.querySelector('#frm_user');
     frm_user.onsubmit = function (e) {
         e.preventDefault();
@@ -93,7 +93,7 @@ async function iniciar_sesion() {
 
     try {
         const datos = new FormData(frm_login);
-          // Enviar a backend para validar inicio de sesión
+        // Enviar a backend para validar inicio de sesión
         let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=iniciar_sesion', {
             method: 'POST',
             mode: 'cors',
@@ -109,9 +109,32 @@ async function iniciar_sesion() {
             alert(json.msg);
         }
 
-        
+
     } catch (error) {
         console.log(error);// Error de red o servidor
 
     }
+}
+
+
+async function view_users() {
+    try {
+        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=ver_usuarios', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+        });
+        let json = await respuesta.json();
+        //validamos
+        if (json.status) { //true
+            location.replace(base_url + 'users');// Redirige si es correcto
+        } else {
+            alert(json.msg);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+if (document.getElementById('content_users')) {
+    view_users();
 }
