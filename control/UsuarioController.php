@@ -31,37 +31,48 @@ if ($tipo == 'registrar') {
 
          $respuesta = $objPersona->registrar($nro_identidad, $razon_social, $telefono, $correo, $departamento, $provincia, $distrito, $cod_postal, $direccion, $rol, $password);
          if ($respuesta) {
+            // Registro exitoso
             $arrResponse = array('status' => true, 'msg' => 'Registrado Correctamente');
          } else {
+              // Error al registrar
             $arrResponse = array('status' => false, 'msg' => 'Error, fallo en registro');
          }
       }
    }
-   echo json_encode($arrResponse);
+   echo json_encode($arrResponse);// Devuelve la respuesta en formato JSON
 }
+ // Si se solicita iniciar sesión
 if ($tipo == "iniciar_sesion") {
-   $nro_identidad = $_POST['username'];
+   // Captura los datos del formulario
+   $nro_identidad = $_POST['usuario'];
    $password = $_POST['password'];
-   if ($nro_identidad == "" || $password == "") {
+   if ($nro_identidad == "" || $password == "") {// Verifica si hay campos vacíos
       $respuesta = array('status' => false, 'msg' => 'Error, campos vacios');
    } else {
+        // Verifica si el usuario existe en la base de datos
       $existePersona = $objPersona->existePersona($nro_identidad);
       if (!$existePersona) {
+
+         // Usuario no encontrado
          $respuesta = array('status' => false, 'msg' => 'Error, usuario no registrado');
       } else {
+         // Obtiene los datos del usuario
          $persona = $objPersona->buscarPersonaPorNroIdentidad($nro_identidad);
-         print_r($persona);
+         //print_r($persona);
          ($nro_identidad);
+         // Verifica si la contraseña es correcta
          if (password_verify($password, $persona->password)) {
             session_start();
+            // Inicia sesión y guarda variables en $_SESSION
             $_SESSION['ventas_id'] = $persona->id;
             $_SESSION['ventas_usuario'] = $persona->razon_social;
 
             $respuesta = array('status' => true, 'msg' => 'Ingresar al sistema');
          } else {
+            // Contraseña incorrecta
             $respuesta = array('status' => false, 'msg' => 'Error,contraseña incorrecto');
          }
       }
    }
-   echo json_encode($respuesta);
+   echo json_encode($respuesta); // Devuelve respuesta JSON
 }
