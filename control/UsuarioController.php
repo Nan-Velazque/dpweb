@@ -78,5 +78,6 @@ if ($tipo == "iniciar_sesion") {
 }
 
 if ($tipo == "ver_usuarios") {
-   echo "recibido por el contralador";
+   $usuarios = $objPersona->verUsuario();
+   echo json_encode($usuarios);
 }

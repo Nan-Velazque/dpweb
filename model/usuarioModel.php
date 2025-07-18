@@ -25,10 +25,20 @@ class UsuarioModel
         $sql = $this->conexion->query($consulta);
         return $sql->num_rows;
     }
-    public function buscarPersonaPorNroIdentidad($nro_identidad){
+    public function buscarPersonaPorNroIdentidad($nro_identidad)
+    {
         $consulta = "SELECT  id, razon_social ,password FROM persona WHERE nro_identidad='$nro_identidad' LIMIT 1";
         $sql = $this->conexion->query($consulta);
         return $sql->fetch_object();
-
+    }
+    public function verUsuario()
+    {
+        $arr_usuarios = array();
+        $consulta = "SELECT * FROM persona";
+        $sql = $this->conexion->query($consulta);
+        while ($objeto = $sql->fetch_object()) {
+            array_push($arr_usuarios, $objeto);
+        }
+        return $arr_usuarios;
     }
 }
