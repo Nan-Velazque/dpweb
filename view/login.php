@@ -128,7 +128,7 @@
     <form id="frm_login">
       <div class="input-field">
         <i class="fas fa-user"></i>
-        <input type="text" name="usuario" placeholder="Usuario" required
+        <input type="text" name="username" placeholder="Usuario" required
         id="username" >
        </div>
        <div class="input-field">

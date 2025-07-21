@@ -44,7 +44,7 @@ if ($tipo == 'registrar') {
 // Si se solicita iniciar sesión
 if ($tipo == "iniciar_sesion") {
    // Captura los datos del formulario
-   $nro_identidad = $_POST['usuario'];
+   $nro_identidad = $_POST['username'];
    $password = $_POST['password'];
    if ($nro_identidad == "" || $password == "") { // Verifica si hay campos vacíos
       $respuesta = array('status' => false, 'msg' => 'Error, campos vacios');
@@ -79,5 +79,6 @@ if ($tipo == "iniciar_sesion") {
 
 if ($tipo == "ver_usuarios") {
    $usuarios = $objPersona->verUsuario();
+   header('Content-Type: application/json');
    echo json_encode($usuarios);
 }
