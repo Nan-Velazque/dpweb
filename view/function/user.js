@@ -135,6 +135,9 @@ async function view_users() {
                     <td>${user.correo || ''}</td>
                     <td>${user.rol || ''}</td>
                     <td>${user.estado || ''}</td>
+                    <td>
+                        <a hrf="`+ base_url +`edit_user/`+user.id+`">Editar</a>
+                    </td>
                 </tr>`;
             });
             document.getElementById('content_users').innerHTML = html;
