@@ -136,7 +136,7 @@ async function view_users() {
                     <td>${user.rol || ''}</td>
                     <td>${user.estado || ''}</td>
                     <td>
-                        <a hrf="`+ base_url +`edit_user/`+user.id+`">Editar</a>
+                        <a href="`+ base_url +`edit_user/`+user.id+`">Editar</a>
                     </td>
                 </tr>`;
             });
@@ -153,3 +153,5 @@ async function view_users() {
 if (document.getElementById('content_users')) {
     view_users();
 }
+
+
