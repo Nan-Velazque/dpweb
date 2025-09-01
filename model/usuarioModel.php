@@ -41,4 +41,10 @@ class UsuarioModel
         }
         return $arr_usuarios;
     }
+    public function ver($id){
+        $consulta = "SELECT * FROM persona WHERE id='$id'";
+        $sql = $this->conexion->query($consulta);
+        return $sql->fetch_object();
+
+    }
 }

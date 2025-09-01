@@ -82,3 +82,10 @@ if ($tipo == "ver_usuarios") {
    header('Content-Type: application/json');
    echo json_encode($usuarios);
 }
+
+if ($tipo == "ver") {
+   //print_r($_POST);
+   $id_persona = $_POST['id_persona'];
+   $usuario = $objPersona->ver($id_persona);
+   echo json_encode($usuario);
+}

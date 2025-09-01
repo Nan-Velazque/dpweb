@@ -136,7 +136,8 @@ async function view_users() {
                     <td>${user.rol || ''}</td>
                     <td>${user.estado || ''}</td>
                     <td>
-                        <a href="`+ base_url +`edit_user/`+user.id+`">Editar</a>
+                    
+                        <a href="`+ base_url + `edit-user/` + user.id + `">Editar</a>
                     </td>
                 </tr>`;
             });
@@ -152,6 +153,25 @@ async function view_users() {
 
 if (document.getElementById('content_users')) {
     view_users();
+}
+async function edit_users() {
+    try {
+        let id_persona = document.getElementById('id_persona').value;
+        const datos = new FormData();
+        datos.append('id_persona', id_persona);
+
+        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=ver', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            body: datos
+        });
+
+
+    } catch (error) {
+        console.log('oops , ocurrio un eror' + error);
+    }
+
 }
 
 
