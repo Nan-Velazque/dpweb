@@ -1,5 +1,5 @@
 // Validar campos del formulario de usuario antes de enviarl
-function validar_form() {
+function validar_form(tipo) {
     let nro_documento = document.getElementById("nro_identidad").value;
     let razon_social = document.getElementById("razon_social").value;
     let telefono = document.getElementById("telefono").value;
@@ -45,15 +45,22 @@ function validar_form() {
     });*/
 
 
-    registrarUsuario();
+    if (tipo=="nuevo") {
+      registrarUsuario();    
+    }
+    if (tipo=="actualizar") {
+      actualizarUsuario();    
+    }
+    
 }
+
 
 if (document.querySelector('#frm_user')) {// Validar que el formulario con id "frm_user" exista en la página
     // Envia al controlador PHP usando fetch
     let frm_user = document.querySelector('#frm_user');
     frm_user.onsubmit = function (e) {
         e.preventDefault();
-        validar_form();
+        validar_form("nuevo");
     }
 }
 
@@ -182,7 +189,7 @@ async function edit_users() {
         document.getElementById('cod_postal').value = json.data.cod_postal;
         document.getElementById('direccion').value = json.data.direccion;
         document.getElementById('rol').value = json.data.rol;
-    
+
 
     } catch (error) {
         console.log('oops , ocurrio un eror' + error);
@@ -190,4 +197,15 @@ async function edit_users() {
 
 }
 
+if (document.querySelector('#frm_edit_user')) {
+    // Evita que se envie el formulario
+    let frm_user = document.querySelector('#frm_edit_user');
+    frm_user.onsubmit = function (e) {
+        e.preventDefault();
+        validar_form("actualizar");
+    }
+}
 
+async function actualizarUsuario() {
+    alert('actualizar');
+}
