@@ -85,14 +85,53 @@ if ($tipo == "ver_usuarios") {
 
 if ($tipo == "ver") {
    //print_r($_POST);
-   $respuesta =array('status'=> false, 'msg'=>'Error');
+   $respuesta = array('status' => false, 'msg' => 'Error');
    $id_persona = $_POST['id_persona'];
    $usuario = $objPersona->ver($id_persona);
    if ($usuario) {
-      $respuesta ['status'] = true ;
+      $respuesta['status'] = true;
       $respuesta['data'] = $usuario;
-   }else {
+   } else {
       $respuesta['msg'] = 'Error , usuario no existe';
    }
    echo json_encode($respuesta);
+}
+if ($tipo == "actualizar") {
+   //print_r($_POST);
+   $id_persona = $_POST['id_persona'];
+   $nro_identidad = $_POST['nro_identidad'];
+   $razon_social = $_POST['razon_social'];
+   $telefono = $_POST['telefono'];
+   $correo = $_POST['correo'];
+   $departamento = $_POST['departamento'];
+   $provincia = $_POST['provincia'];
+   $distrito = $_POST['distrito'];
+   $cod_postal = $_POST['cod_postal'];
+   $direccion = $_POST['direccion'];
+   $rol = $_POST['rol'];
+   if ($id_persona == "" || $nro_identidad == "" || $razon_social == "" || $telefono == "" || $correo == "" || $departamento == "" || $provincia == "" || $distrito == "" || $cod_postal == "" || $direccion == "" || $rol == "") {
+      $arrResponse = array('status' => false, 'msg' => 'Error, campos vacios');
+   } else {
+      $existeID  = $objPersona->ver($id_persona);
+      if (!$existeID) {
+         //devolver mensaje
+         $arrResponse = array('status' => false, 'msg' => 'Error, usuario no existe en BD');
+         echo json_encode($arrResponse);
+         //Cerrar funcion
+         exit;
+      } else {
+         //actualizar
+         $actualizar = $objPersona->actualizar($id_persona, $nro_identidad, $razon_social, $telefono, $correo, $departamento, $provincia, $distrito, $cod_postal, $direccion, $rol);
+         if ($actualizar) {
+            $arrResponse = array('status' => true, 'msg' => "Actualizado correctamente");
+         } else {
+            $arrResponse = array('status' => true, 'msg' => $actualizar);
+         }
+         echo json_encode($arrResponse);
+         exit;
+      }
+   
+     //eliminar 
+
+   }
 }

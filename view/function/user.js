@@ -45,13 +45,13 @@ function validar_form(tipo) {
     });*/
 
 
-    if (tipo=="nuevo") {
-      registrarUsuario();    
+    if (tipo == "nuevo") {
+        registrarUsuario();
     }
-    if (tipo=="actualizar") {
-      actualizarUsuario();    
+    if (tipo == "actualizar") {
+        actualizarUsuario();
     }
-    
+
 }
 
 
@@ -205,7 +205,23 @@ if (document.querySelector('#frm_edit_user')) {
         validar_form("actualizar");
     }
 }
-
+//actualizar
 async function actualizarUsuario() {
-    alert('actualizar');
+    const datos = new FormData(frm_edit_user);
+    let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=actualizar', {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: datos
+    });
+    json = await respuesta.json();
+    if (!json.status) {
+        alert("Oooooooops,ocurrio un error al actualizar ,intentelo nuevamente");
+        console.log(json.msg);
+        return;
+    } else {
+        alert(json.msg);
+    }
+
+
 }
