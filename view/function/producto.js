@@ -7,12 +7,8 @@ async function listar_productos() {
             let cont = 0;
             datos.forEach(item => {
                 let nueva_fila = document.createElement("tr");
-                // "nueva_fila.id" = id de la nueva fila, "item.id" = id de la base de datos(producto)
                 nueva_fila.id = "fila" + item.id;
-                // Sumar 1 al contador
-                /* cont+=1; */
                 cont++;
-                // los items.xx vienen De la Base de datos
                 nueva_fila.innerHTML = `
                     <th>${cont}</th>
                     <td>${item.codigo}</td>
@@ -53,12 +49,11 @@ async function insertar_producto() {
         return;
     }
 
-    // Mostrar error en caso de codigo roto
+    
     try {
-        // Capturar los datos del formulario y guardarlos en la constante "datos"
+        
         const datos = new FormData(formInsertProducto);
-        // Enviar datos hacia el controlador
-        // await = promesa
+        
         let respuesta = await fetch(base_url + '/controller/Producto.php?tipo=registrar', {
             method: 'POST',
             mode: 'cors',
@@ -84,17 +79,12 @@ async function listar_proveedores() {
         json = await respuesta.json();
         if (json.status) {
             let datos = json.contenido;
-            let contenido_select = '<option value="" disabled selected>Seleccione</option>'; // Sin jquery
+            let contenido_select = '<option value="" disabled selected>Seleccione</option>'; 
             datos.forEach(element => {
-                contenido_select += '<option value="' + element.id + '">' + element.razon_social + '</option>'; // Sin jquery
+                contenido_select += '<option value="' + element.id + '">' + element.razon_social + '</option>'; 
 
-                // Para trabajar con jquery
-                /*$('#idProveedor').append($('<option />', {
-                    text: `${element.razon_social}` ,
-                    value: `${element.id}`
-                }));*/
             });
-            document.getElementById('idProveedor').innerHTML = contenido_select; // Sin jquery
+            document.getElementById('idProveedor').innerHTML = contenido_select; 
         }
         console.log(respuesta);
     } catch (e) {
@@ -108,17 +98,12 @@ async function listar_productosP() {
         json = await respuesta.json();
         if (json.status) {
             let datos = json.contenido;
-            let contenido_select = '<option value="" disabled selected>Seleccione</option>'; // Sin jquery
+            let contenido_select = '<option value="" disabled selected>Seleccione</option>'; /
             datos.forEach(element => {
-                contenido_select += '<option value="' + element.id + '">' + element.nombre + '</option>'; // Sin jquery
+                contenido_select += '<option value="' + element.id + '">' + element.nombre + '</option>'; 
 
-                // Para trabajar con jquery
-                /*$('#idProveedor').append($('<option />', {
-                    text: `${element.razon_social}` ,
-                    value: `${element.id}`
-                }));*/
             });
-            document.getElementById('idProducto').innerHTML = contenido_select; // Sin jquery
+            document.getElementById('idProducto').innerHTML = contenido_select; 
         }
         console.log(respuesta);
     }catch(e){
