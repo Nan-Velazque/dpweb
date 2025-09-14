@@ -1,23 +1,51 @@
 <?php
-require_once("../library/conexion.php");
+    require_once "../librerias/conexion.php";
+    class categoriaModel{
+        private $conexion;
+        function __construct(){
+            $this->conexion = new Conexion();
+            $this->conexion = $this->conexion->connect();
+        }
 
-class CategoriaModel {
-    private $conexion;
+        // Todas las categorias
+        public function obtener_categorias(){
+            $arrRespuesta = array();
+            $respuesta = $this->conexion->query("SELECT * FROM categoria WHERE estado = 1");
+            while ($objeto = $respuesta->fetch_object()) {
+                array_push($arrRespuesta, $objeto);
+            }
+            return $arrRespuesta;
+        }
 
-    public function __construct() {
-        $this->conexion = new Conexion();
-        $this->conexion = $this->conexion->connect();
+        // Por ID
+        public function obtener_categoria($id){
+            $respuesta = $this->conexion->query("SELECT * FROM categoria WHERE id='{$id}'");
+            $objeto = $respuesta->fetch_object();
+            return $objeto;
+        }
+
+        public function registrarCategoria($nombre, $detalle){
+            // Orden de la base de datos
+            $sql = $this->conexion->query("CALL registrar_categoria('{$nombre}', '{$detalle}')");
+            return $sql;
+        }
+        
+        public function verCategoria($id){
+            $sql = $this->conexion->query("SELECT * FROM categoria WHERE id = '{$id}'");
+            //convertimos la respuesta en un objeto
+            $sql = $sql->fetch_object();
+            return $sql;
+        }
+
+        public function actualizarCategoria($id_categoria, $nombre, $detalle){
+            $sql = $this->conexion->query("CALL actualizar_categoria('{$id_categoria}','{$nombre}','{$detalle}')");
+            $sql = $sql->fetch_object();
+            return $sql;
+        }
+
+        public function eliminarCategoria($id){
+            $sql = $this->conexion->query("CALL eliminar_categoria('{$id}')");
+            return $sql;
+        }
     }
-
-    public function registrar($nombre, $detalle) {
-        $consulta = "INSERT INTO categoria (nombre, detalle) VALUES ('$nombre', '$detalle')";
-        $sql = $this->conexion->query($consulta);
-        return $sql ? $this->conexion->insert_id : 0;
-    }
-
-    public function existeCategoria($nombre) {
-        $consulta = "SELECT * FROM categoria WHERE nombre = '$nombre'";
-        $sql = $this->conexion->query($consulta);
-        return $sql ? $sql->num_rows : 0;
-    }
-}
+?>
