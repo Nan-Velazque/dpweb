@@ -1,6 +1,6 @@
 <div id="form-control">
     <form action="" id="formUpdateCategoria">
-        <center><h3><b>Formulario de registro de categoria</b></h3></center>
+        <center><h3><b>Editar dastos  de categoria</b></h3></center>
         <input type="hidden" class="form-control" id="id_categoria" name="id_categoria" required>
     <div class="mb-3">
         <label for="nombre" class="form-label">Nombre de categoria: </label>
