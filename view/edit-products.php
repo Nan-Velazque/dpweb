@@ -1,6 +1,6 @@
 <div id="form-control">
     <form action="" id="formUpdateProducto">
-        <center><h3><b>Formulario de edición de producto</b></h3></center>
+        <center><h3><b>Editar datos de producto</b></h3></center>
         <input type="hidden" name="id_producto" id="id_producto">
         <input type="hidden" name="img" id="img">
     <div class="mb-3">
