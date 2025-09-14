@@ -1,45 +1,96 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Registrar Categoría</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php
+require_once('../model/categoriaModel.php');
+$tipo = $_REQUEST['tipo'];
+$objCategoria = new categoriaModel();
 
+if ($tipo == 'listar') {
+    
+    $arr_Respuesta = array('status'=>false, 'contenido'=>'');
+    $arr_Categorias = $objCategoria->obtener_categorias();
+    if (!empty($arr_Categorias)) {
+        
+        for ($i=0; $i < count($arr_Categorias); $i++) {
+            $idCategoria = $arr_Categorias[$i]->id;
+            $categoria = $arr_Categorias[$i]->nombre;
+            $opciones = '<a href="'.BASE_URL.'/editar-categoria/'.$idCategoria.'"><i class="fas fa-edit"></i>Editar</a>    <button onclick="eliminar_categoria('.$idCategoria.');">Eliminar</button>';
+            $arr_Categorias[$i]->options = $opciones;
+        }
+        $arr_Respuesta['status'] = true;
+        $arr_Respuesta['contenido'] = $arr_Categorias;
+    }
 
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>view/bootstrap/css/bootstrap.min.css">
+    echo json_encode($arr_Respuesta);
+}
 
+if ($tipo == 'registrar') {
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    if ($_POST) {
+        $nombre = $_POST['nombre'];
+        $detalle = $_POST['detalle'];
+        if ($nombre == "" || $detalle == "") {
+            
+            $arr_Respuesta = array('status'=>false,'mensaje'=>'Error, campos vacíos');
+        }else{
+            
+            $arrCategoria = $objCategoria->registrarCategoria(
+                $nombre, $detalle);
 
-    <script>
-        const base_url = '<?php echo BASE_URL; ?>';
-    </script>
-</head>
-<body>
-    <div class="container mt-5">
-        <div class="card mx-auto" style="max-width: 600px;">
-            <div class="card-header text-center">
-                <h5>Registrar Categoría</h5>
-            </div>
-            <form id="categoriaForm">
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="detalle" class="form-label">Detalle</label>
-                        <textarea class="form-control" id="detalle" name="detalle" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-success">Registrar</button>
-                    <button type="reset" class="btn btn-secondary">Limpiar</button>
-                </div>
-            </form>
-        </div>
-    </div>
+            if ($arrCategoria->id>0) {
+                $arr_Respuesta = array('status'=>true,'mensaje'=>'Registro exitoso.');
 
+            }else{
+                $arr_Respuesta = array('status'=>false,'mensaje'=>'Error al registrar producto.');
+            }
+            echo json_encode($arr_Respuesta);
+        }
+
+    }
+}
+
+if($tipo == 'ver'){
    
-    <script src="<?php echo BASE_URL; ?>view/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?php echo BASE_URL; ?>view/function/categoria.js"></script>
-</body>
-</html>
+    $id_categoria = $_POST['id_categoria'];
+ 
+    $arr_Respuesta = $objCategoria->verCategoria($id_categoria);
+  
+    if (empty($arr_Respuesta)) {
+        $response = array('status'=>false, 'mensaje'=>"Error, no hay información");
+    }else{
+        $response = array('status'=>true, 'mensaje'=>"Datos encontrados", 'contenido'=>$arr_Respuesta);
+    }
+    echo json_encode($response);
+
+}
+
+if ($tipo == "actualizar") {
+    $id_categoria = $_POST['id_categoria'];
+    $nombre = $_POST['nombre'];
+    $detalle = $_POST['detalle'];
+    if ($id_categoria == "" || $nombre == "" || $detalle == "") {
+        $arr_Respuesta = array('status' => false, 'mensaje' => 'Error, campos vacíos');
+    } else {
+        $arrCategoria = $objCategoria->actualizarCategoria($id_categoria, $nombre, $detalle);
+        if ($arrCategoria->p_id > 0) {
+            $arr_Respuesta = array('status' => true, 'mensaje' => 'Actualizado Correctamente');
+        } else {
+            $arr_Respuesta = array('status' => false, 'mensaje' => 'Error al actualizar categoria');
+        }
+    }
+    echo json_encode($arr_Respuesta);
+}
+
+if ($tipo == "eliminar") {
+    
+   $id_categoria = $_POST['id_categoria'];
+ 
+   $arr_Respuesta = $objCategoria->eliminarCategoria($id_categoria);
+   
+   if (empty($arr_Respuesta)) {
+       $response = array('status' => false);
+   } else {
+       $response = array('status' => true);
+   }
+   echo json_encode($response);
+}
+
+?>
