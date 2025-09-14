@@ -19,3 +19,4 @@
 </div>
 </div>
 <script src="<?= BASE_URL ?>view/function/producto.js"></script>
+<!--<script>view_products();</script>-->
