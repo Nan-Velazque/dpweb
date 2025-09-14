@@ -16,3 +16,4 @@ class Conexion
         return $mysql;
     }
 }
+?>
