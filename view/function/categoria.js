@@ -7,11 +7,11 @@ async function insertar_categoria() {
         return;
     }
 
-// Mostrar error en caso de codigo roto
+
     try {
-        // 
+        
         const datos = new FormData(formInsertCategoria);
-        // await = promesa
+       
         let respuesta = await fetch(base_url + '/controller/Categoria.php?tipo=registrar',{
             method: 'POST',
             mode: 'cors',
@@ -37,17 +37,12 @@ async function listar_categorias() {
         json = await respuesta.json();
         if (json.status) {
             let datos = json.contenido;
-            let contenido_select = '<option value="" disabled selected>Seleccione</option>'; // Sin jquery
+            let contenido_select = '<option value="" disabled selected>Seleccione</option>'; 
             datos.forEach(element => {
-                contenido_select += '<option value="' + element.id + '">' + element.nombre + '</option>'; // Sin jquery
+                contenido_select += '<option value="' + element.id + '">' + element.nombre + '</option>'; 
 
-                // Para trabajar con jquery
-                /*$('#idCategoria').append($('<option />', {
-                    text: ${element.nombre} ,
-                    value: ${element.id}
-                }));*/
             });
-            document.getElementById('idCategoria').innerHTML = contenido_select; // Sin jquery
+            document.getElementById('idCategoria').innerHTML = contenido_select; 
         }
         console.log(respuesta);
     }catch(e){
@@ -65,12 +60,11 @@ async function listar_categorias_admin() {
             let cont = 0;
             datos.forEach(item => {
                 let nueva_fila = document.createElement("tr");
-                // "nueva_fila.id" = id de la nueva fila, "item.id" = id de la base de datos(producto)
+              
                 nueva_fila.id = "fila" + item.id;
-                // Sumar 1 al contador
-                /* cont+=1; */
+               
                 cont++;
-                // los items.xx vienen De la Base de datos
+               
                 nueva_fila.innerHTML = `
                     <th>${cont}</th>
                     <td>${item.nombre}</td>
