@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>velazque</title>
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>view/bootstrap/css/bootstrap.min.css">
+    <script src="<?php echo BASE_URL; ?>/views/js/function_producto.js"></script>
+    <script src="<?php echo BASE_URL; ?>/views/js/function_categoria.js"></script>
     <script>
         const base_url = '<?php echo BASE_URL; ?>';
     </script>
