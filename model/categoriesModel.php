@@ -6,10 +6,10 @@ class CategoriesModel  // Clase que maneja las operaciones relacionadas con las 
 {
     private $conexion;   // Variable para almacenar la conexión a la base de datos
 
-    function __construct()  
+    function __construct()
     {
         $this->conexion = new Conexion();  // Crea una nueva instancia de la clase Conexion
-        $this->conexion = $this->conexion->connect(); 
+        $this->conexion = $this->conexion->connect();
     }
 
     public function registrar($nombre, $detalle)  // Método para registrar una nueva categoría en la base de datos
@@ -24,15 +24,16 @@ class CategoriesModel  // Clase que maneja las operaciones relacionadas con las 
         }
     }
 
-    public function existeCategoria($nombre) 
+    public function existeCategoria($nombre)
     {
-        $consulta = "SELECT * FROM categoria WHERE nombre = '$nombre'";  
-        $sql = $this->conexion->query($consulta); 
-        return $sql->num_rows; 
+        $consulta = "SELECT * FROM categoria WHERE nombre = '$nombre'";
+        $sql = $this->conexion->query($consulta);
+        return $sql->num_rows;
     }
-    
-        // Obtener todas las categorías
-    public function getCategories() {
+
+    // Obtener todas las categorías
+    public function getCategories()
+    {
         $consulta = "SELECT * FROM categoria";
         $sql = $this->conexion->query($consulta);
         $data = [];
@@ -41,23 +42,26 @@ class CategoriesModel  // Clase que maneja las operaciones relacionadas con las 
         }
         return $data;
     }
-    
-        // Obtener una categoría por su ID
-    public function getCategory($id) {
+
+    // Obtener una categoría por su ID
+    public function getCategory($id)
+    {
         $consulta = "SELECT * FROM categoria WHERE id = $id LIMIT 1";
         $sql = $this->conexion->query($consulta);
         return $sql->fetch_assoc();
     }
 
     // Actualizar una categoría
-    public function actualizar($id, $nombre, $detalle) {
+    public function actualizar($id, $nombre, $detalle)
+    {
         $consulta = "UPDATE categoria SET nombre = '$nombre', detalle = '$detalle' WHERE id = $id";
         $sql = $this->conexion->query($consulta);
         return $sql ? true : false;
     }
 
     // Eliminar una categoría
-    public function eliminar($id) {
+    public function eliminar($id)
+    {
         $consulta = "DELETE FROM categoria WHERE id = $id";
         $sql = $this->conexion->query($consulta);
         return $sql ? true : false;

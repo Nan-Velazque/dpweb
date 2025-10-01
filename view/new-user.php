@@ -67,6 +67,7 @@
                                 <option value="1">administrador</option>
                                 <option value="2">usuario</option>
                                 <option value="3">almacen</option>
+                                <option value="4">proveedor</option>
                             </select>
                         </div>
                     </div>

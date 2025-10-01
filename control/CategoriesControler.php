@@ -77,4 +77,6 @@ if ($tipo == "eliminar") {
         $arrResponse = array('status' => false, 'msg' => 'Error al eliminar la categoría');
     }
     echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+    
+
 }

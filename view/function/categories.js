@@ -202,7 +202,9 @@ if (document.querySelector('#frm_category')) {
                 Swal.fire("Error", json.msg, "error");
             }
         } else {
-            validar_form_categoria(); // registrar normal
+            validar_form_categoria(); // registrar
         }
     }
 }
+
+

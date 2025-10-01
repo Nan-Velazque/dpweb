@@ -135,3 +135,16 @@ if ($tipo == "actualizar") {
 
    }
 }
+    // cargar proveedor
+   $tipo = $_GET['tipo'] ?? '';
+ini_set('display_errors',1); ini_set('display_startup_errors',1); error_reporting(E_ALL);
+$objUsuario = new UsuarioModel();
+   
+ if ($tipo=="ver_proveedores") {
+  $proveedores = $objUsuario->verProveedores();
+  $respuesta = ['status'=>false,'data'=>[]];
+  if (count($proveedores)>0) $respuesta=['status'=>true,'data'=>$proveedores];
+  header('Content-Type: application/json');
+  echo json_encode($respuesta);
+  exit;
+}

@@ -52,18 +52,27 @@
                             <input type="file" class="form-control" id="imagen" name="imagen" accept=".jpg, .jpeg, .png" placeholder="imagen" required>
                         </div>
                     </div>
-
-
+                    <div class="mb-3 row">
+                        <label for="id_persona" class="col-sm-4 col-form-label">proveedor:</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" aria-label="default select example" id="id_persona" name="id_persona" required>
+                                <option value="">Seleccione un proveedor</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div style="display: flex;justify-content: center; gap: 20px;">
-                    <button type="submit" class="btn btn-success">Registrar</button>
-                    <button type="reset" class="btn btn-info">Limpiar</button>
-                    <a href="<?php echo BASE_URL; ?>products" class="btn btn-danger">Cancelar</a>
-                </div>
-        </form>
+            </div>
     </div>
+    <div style="display: flex;justify-content: center; gap: 20px;">
+        <button type="submit" class="btn btn-success">Registrar</button>
+        <button type="reset" class="btn btn-info">Limpiar</button>
+        <a href="<?php echo BASE_URL; ?>products" class="btn btn-danger">Cancelar</a>
+    </div>
+    </form>
+</div>
 </div>
 <script src="<?php echo BASE_URL; ?>view/function/products.js"></script>
 <script>
     cargar_categorias();
+    cargarProveedores();
 </script>

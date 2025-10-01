@@ -215,3 +215,11 @@ async function eliminar(id) {
         // console.log(contenido);
         document.getElementById('id_categoria').innerHTML = contenido;
  }
+ // cargar proveedor 
+async function cargarProveedores() {
+  let r = await fetch(base_url + 'control/UsuarioControler.php?tipo=ver_proveedores');
+  let j = await r.json();
+  let h = '<option value="">Seleccione un proveedor</option>';
+  j.data.forEach(p => h += <option value="${p.id}">${p.razon_social}</option>);
+  document.getElementById("id_persona").innerHTML = h;
+}

@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody id="content_products">
-            <!-- Aquí se cargan los productos dinámicamente -->
+
         </tbody>
     </table>
 </div>
