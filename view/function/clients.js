@@ -20,7 +20,7 @@ function validar_form(tipo) {
 
         return;// Detener función
     }
-
+    /*
     Swal.fire({
         title: "¡Registro exitoso!",
 
@@ -42,32 +42,32 @@ function validar_form(tipo) {
         },
         icon: "success",
         draggable: true
-    });
+    });*/
 
 
     if (tipo == "nuevo") {
-        registrarUsuario();
+        registrarClients();
     }
     if (tipo == "actualizar") {
-        actualizarUsuario();
+        actualizarClients();
     }
 
 }
 
 
-if (document.querySelector('#frm_user')) {// Validar que el formulario con id "frm_user" exista en la página
+if (document.querySelector('#frm_client')) {// Validar que el formulario con id "frm_user" exista en la página
     // Envia al controlador PHP usando fetch
-    let frm_user = document.querySelector('#frm_user');
+    let frm_user = document.querySelector('#frm_client');
     frm_user.onsubmit = function (e) {
         e.preventDefault();
         validar_form("nuevo");
     }
 }
 
-async function registrarUsuario() {
+async function registrarClients() {
     try {
         //capturar campos de formulario (HTML)
-        const datos = new FormData(frm_user);
+        const datos = new FormData(frm_client);
         //enviar datos a controlador
         let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=registrar', {
             method: 'POST',
@@ -79,7 +79,7 @@ async function registrarUsuario() {
         //validamos que json.status sea = true
         if (json.status) { // Mostrar mensaje de éxito o error
             alert(json.msg);
-            document.getElementById('frm_user').reset(); // Limpiar formulario
+            document.getElementById('frm_client').reset(); // Limpiar formulario
         } else {
             alert(json.msg);
         }
@@ -111,7 +111,7 @@ async function iniciar_sesion() {
         let json = await respuesta.json();
         //validamos
         if (json.status) { //true
-            location.replace(base_url + 'new-user');// Redirige si es correcto
+            location.replace(base_url + 'new-client');// Redirige si es correcto
         } else {
             alert(json.msg);
         }
@@ -124,9 +124,9 @@ async function iniciar_sesion() {
 }
 
 
-async function view_users() {
+async function view_clients() {
     try {
-        let respuesta = await fetch(base_url + 'control/usuarioController.php?tipo=ver_usuarios', {
+        let respuesta = await fetch(base_url + 'control/usuarioController.php?tipo=ver_clients', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache'
@@ -143,26 +143,25 @@ async function view_users() {
                     <td>${user.rol || ''}</td>
                     <td>${user.estado || ''}</td>
                     <td>
-  <a href="`+ base_url + `edit-user/` + user.id + `">Editar</a> |
-  <a href="#" onclick="eliminarUser(${user.id})" style="color:red;">Eliminar</a>
-</td>
-
+                    
+                        <a href="`+ base_url + `edit-client/` + user.id + `">Editar</a>
+                    </td>
                 </tr>`;
             });
-            document.getElementById('content_users').innerHTML = html;
+            document.getElementById('content_clients').innerHTML = html;
         } else {
-            document.getElementById('content_users').innerHTML = '<tr><td colspan="6">No hay usuarios disponibles</td></tr>';
+            document.getElementById('content_clients').innerHTML = '<tr><td colspan="6">No hay usuarios disponibles</td></tr>';
         }
     } catch (error) {
         console.log(error);
-        document.getElementById('content_users').innerHTML = '<tr><td colspan="6">Error al cargar los usuarios</td></tr>';
+        document.getElementById('content_clients').innerHTML = '<tr><td colspan="6">Error al cargar los usuarios</td></tr>';
     }
 }
 
-if (document.getElementById('content_users')) {
+if (document.getElementById('content_clients')) {
     view_users();
 }
-async function edit_users() {
+async function edit_clients() {
     try {
         let id_persona = document.getElementById('id_persona').value;
         const datos = new FormData();
@@ -198,9 +197,9 @@ async function edit_users() {
 
 }
 
-if (document.querySelector('#frm_edit_user')) {
+if (document.querySelector('#frm_client')) {
     // Evita que se envie el formulario
-    let frm_user = document.querySelector('#frm_edit_user');
+    let frm_user = document.querySelector('#frm_new_client');
     frm_user.onsubmit = function (e) {
         e.preventDefault();
         validar_form("actualizar");
@@ -208,7 +207,7 @@ if (document.querySelector('#frm_edit_user')) {
 }
 //actualizar
 async function actualizarUsuario() {
-    const datos = new FormData(frm_edit_user);
+    const datos = new FormData(frm_client);
     let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=actualizar', {
         method: 'POST',
         mode: 'cors',

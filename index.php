@@ -5,6 +5,4 @@ $view->getPlantillaControl();
 
 
 
-
-
 ?>
