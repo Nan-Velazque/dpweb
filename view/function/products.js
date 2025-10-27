@@ -220,6 +220,5 @@ async function cargarProveedores() {
   let r = await fetch(base_url + 'control/UsuarioController.php?tipo=ver_proveedores');
   let j = await r.json();
   let h = '<option value="">Seleccione un proveedor</option>';
-  j.data.forEach(p => h += <option value="${p.id}">${p.razon_social}</option>);
   document.getElementById("id_persona").innerHTML = h;
 }

@@ -19,12 +19,11 @@
 </div>
 
 <script src="<?= BASE_URL ?>view/function/proveedor.js"></script>
-<script>view_proveedores();</script>
+<script>
+    view_proveedores();
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // Llama a la función para cargar los proveedores cuando el DOM esté completamente cargado
         view_proveedores();
     });
-    
-
 </script>

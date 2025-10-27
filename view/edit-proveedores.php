@@ -82,7 +82,7 @@
 </div>
 
 <!--Fin de cuerpo de pagina-->
-<script src="<?php echo BASE_URL; ?>view/function/proveedores.js"></script>
+<script src="<?php echo BASE_URL; ?>view/function/proveedor.js"></script>
 <script>
     edit_users();
 </script>
