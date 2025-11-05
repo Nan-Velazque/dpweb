@@ -153,9 +153,8 @@ if ($tipo == "ver_proveedores") {
 }
 
 
-
 if ($tipo == "ver_clients") {
-   $clientes = $objUsuario->ver_client();
+   $clientes = $objUsuario->verUsuario();
    $respuesta = ['status' => false, 'data' => []];
    if (count($clientes) > 0) $respuesta = ['status' => true, 'data' => $clientes];
    header('Content-Type: application/json');
