@@ -99,7 +99,8 @@ async function iniciar_sesion() {
         datos.append('username', usuario);
         datos.append('password', password);
 
-        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=login', {
+        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=iniciar_sesion', {
+
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
