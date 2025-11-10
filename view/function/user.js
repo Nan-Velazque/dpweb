@@ -11,44 +11,54 @@ function validar_form(tipo) {
     let direccion = document.getElementById("direccion").value;
     let rol = document.getElementById("rol").value;
 
-    if (
-        nro_documento === "" || razon_social === "" || telefono === "" || correo === "" ||
-        departamento === "" || provincia === "" || distrito === "" ||
-        cod_postal === "" || direccion === "" || rol === ""
-    ) {
+    if (nro_documento == "" || razon_social == "" || telefono == "" || correo == "" ||
+        departamento == "" || provincia == "" || distrito == "" || cod_postal == "" ||
+        direccion == "" || rol == "") {
+
         Swal.fire({
-            title: "Error",
-            text: "Hay campos vacíos, por favor complete todos los campos.",
-            icon: "error"
+            title: "ERROR?",
+            text: "¡Ups! Hay campos vacíos.",
+            icon: "question"
         });
-        return;
+        return; // Detener función
     }
 
     Swal.fire({
-        title: "Registro exitoso",
+        title: "¡Registro exitoso!",
         icon: "success",
-        confirmButtonText: "Aceptar",
+        confirmButtonText: "¡Perfecto!",
         confirmButtonColor: "#ff6b6b",
         timer: 4000,
         timerProgressBar: true,
-        showClass: { popup: 'animate__animated animate__tada' },
-        hideClass: { popup: 'animate__animated animate__bounceOut' }
+        customClass: {
+            popup: 'swal2-success-fun',
+            title: 'swal2-title-party',
+            htmlContainer: 'swal2-html-fun'
+        },
+        showClass: {
+            popup: 'animate__animated animate__tada'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__bounceOut'
+        },
+        draggable: true
     });
 
-    if (tipo === "nuevo") {
+    if (tipo == "nuevo") {
         registrarUsuario();
     }
-    if (tipo === "actualizar") {
+    if (tipo == "actualizar") {
         actualizarUsuario();
     }
 }
 
+// Validar que el formulario exista
 if (document.querySelector('#frm_user')) {
     let frm_user = document.querySelector('#frm_user');
     frm_user.onsubmit = function (e) {
         e.preventDefault();
         validar_form("nuevo");
-    };
+    }
 }
 
 async function registrarUsuario() {
@@ -61,6 +71,7 @@ async function registrarUsuario() {
             body: datos
         });
         let json = await respuesta.json();
+
         if (json.status) {
             alert(json.msg);
             document.getElementById('frm_user').reset();
@@ -68,17 +79,17 @@ async function registrarUsuario() {
             alert(json.msg);
         }
     } catch (e) {
-        console.log("Error al registrar Usuario: " + e);
+        console.log("Error al registrar Usuario:" + e);
     }
 }
 
 // Función para iniciar sesión
 async function iniciar_sesion() {
-    let usuario = document.getElementById("username").value.trim();
-    let password = document.getElementById("password").value.trim();
+    let usuario = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
 
-    if (usuario === "" || password === "") {
-        alert("Error, campos vacíos.");
+    if (usuario == "" || password == "") {
+        alert("Error, campos vacíos!");
         return;
     }
 
@@ -94,13 +105,6 @@ async function iniciar_sesion() {
             body: datos
         });
 
-        if (!respuesta.ok) {
-            const texto = await respuesta.text();
-            console.error("Error HTTP:", respuesta.status, texto);
-            alert("Error del servidor (" + respuesta.status + ")");
-            return;
-        }
-
         let json = await respuesta.json();
 
         if (json.status) {
@@ -108,11 +112,13 @@ async function iniciar_sesion() {
         } else {
             alert(json.msg);
         }
+
     } catch (error) {
-        console.log("Error en iniciar_sesion(): " + error);
+        console.log(error);
     }
 }
 
+// Ver usuarios
 async function view_users() {
     try {
         let respuesta = await fetch(base_url + 'control/usuarioController.php?tipo=ver_usuarios', {
@@ -120,13 +126,13 @@ async function view_users() {
             mode: 'cors',
             cache: 'no-cache'
         });
+
         let json = await respuesta.json();
 
         if (json && json.length > 0) {
             let html = '';
             json.forEach((user, index) => {
-                html += `
-                <tr>
+                html += `<tr>
                     <td>${index + 1}</td>
                     <td>${user.nro_identidad || ''}</td>
                     <td>${user.razon_social || ''}</td>
@@ -141,13 +147,12 @@ async function view_users() {
             });
             document.getElementById('content_users').innerHTML = html;
         } else {
-            document.getElementById('content_users').innerHTML =
-                '<tr><td colspan="6">No hay usuarios disponibles</td></tr>';
+            document.getElementById('content_users').innerHTML = '<tr><td colspan="6">No hay usuarios disponibles</td></tr>';
         }
+
     } catch (error) {
         console.log(error);
-        document.getElementById('content_users').innerHTML =
-            '<tr><td colspan="6">Error al cargar los usuarios</td></tr>';
+        document.getElementById('content_users').innerHTML = '<tr><td colspan="6">Error al cargar los usuarios</td></tr>';
     }
 }
 
@@ -168,7 +173,7 @@ async function edit_users() {
             body: datos
         });
 
-        let json = await respuesta.json();
+        json = await respuesta.json();
 
         if (!json.status) {
             alert(json.msg);
@@ -192,13 +197,14 @@ async function edit_users() {
 }
 
 if (document.querySelector('#frm_edit_user')) {
-    let frm_user = document.querySelector('#frm_edit_user');
-    frm_user.onsubmit = function (e) {
+    let frm_edit_user = document.querySelector('#frm_edit_user');
+    frm_edit_user.onsubmit = function (e) {
         e.preventDefault();
         validar_form("actualizar");
-    };
+    }
 }
 
+// Actualizar usuario
 async function actualizarUsuario() {
     const datos = new FormData(frm_edit_user);
     let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=actualizar', {
@@ -207,11 +213,13 @@ async function actualizarUsuario() {
         cache: 'no-cache',
         body: datos
     });
-    let json = await respuesta.json();
+
+    json = await respuesta.json();
 
     if (!json.status) {
-        alert("Ocurrió un error al actualizar, inténtelo nuevamente.");
+        alert("Ocurrió un error al actualizar, inténtelo nuevamente");
         console.log(json.msg);
+        return;
     } else {
         alert(json.msg);
     }
