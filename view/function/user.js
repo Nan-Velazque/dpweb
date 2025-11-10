@@ -1,6 +1,4 @@
-// -------------------------------------------------------------
-// Validar campos del formulario de usuario antes de enviarlo
-// -------------------------------------------------------------
+// Validar campos del formulario de usuario antes de enviar
 function validar_form(tipo) {
     let nro_documento = document.getElementById("nro_identidad").value;
     let razon_social = document.getElementById("razon_social").value;
@@ -14,40 +12,43 @@ function validar_form(tipo) {
     let rol = document.getElementById("rol").value;
 
     if (
-        nro_documento == "" || razon_social == "" || telefono == "" ||
-        correo == "" || departamento == "" || provincia == "" ||
-        distrito == "" || cod_postal == "" || direccion == "" || rol == ""
+        nro_documento === "" || razon_social === "" || telefono === "" || correo === "" ||
+        departamento === "" || provincia === "" || distrito === "" ||
+        cod_postal === "" || direccion === "" || rol === ""
     ) {
         Swal.fire({
-            title: "ERROR ⚠️",
-            text: "¡Ups! Hay campos vacíos.",
+            title: "Error",
+            text: "Hay campos vacíos, por favor complete todos los campos.",
             icon: "error"
         });
         return;
     }
 
     Swal.fire({
-        title: "¡Registro exitoso!",
-        confirmButtonText: "¡Perfecto!",
+        title: "Registro exitoso",
+        icon: "success",
+        confirmButtonText: "Aceptar",
         confirmButtonColor: "#ff6b6b",
-        timer: 2500,
+        timer: 4000,
         timerProgressBar: true,
-        icon: "success"
+        showClass: { popup: 'animate__animated animate__tada' },
+        hideClass: { popup: 'animate__animated animate__bounceOut' }
     });
 
-    if (tipo === "nuevo") registrarUsuario();
-    if (tipo === "actualizar") actualizarUsuario();
+    if (tipo === "nuevo") {
+        registrarUsuario();
+    }
+    if (tipo === "actualizar") {
+        actualizarUsuario();
+    }
 }
 
-// -------------------------------------------------------------
-// Enviar formulario de nuevo usuario
-// -------------------------------------------------------------
 if (document.querySelector('#frm_user')) {
     let frm_user = document.querySelector('#frm_user');
     frm_user.onsubmit = function (e) {
         e.preventDefault();
         validar_form("nuevo");
-    }
+    };
 }
 
 async function registrarUsuario() {
@@ -59,16 +60,10 @@ async function registrarUsuario() {
             cache: 'no-cache',
             body: datos
         });
-
-        if (!respuesta.ok) {
-            console.error("Error HTTP:", respuesta.status);
-            return;
-        }
-
         let json = await respuesta.json();
         if (json.status) {
             alert(json.msg);
-            frm_user.reset();
+            document.getElementById('frm_user').reset();
         } else {
             alert(json.msg);
         }
@@ -77,23 +72,22 @@ async function registrarUsuario() {
     }
 }
 
-// -------------------------------------------------------------
-// FUNCIÓN PARA INICIAR SESIÓN
-// -------------------------------------------------------------
+// Función para iniciar sesión
 async function iniciar_sesion() {
-    let usuario = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
+    let usuario = document.getElementById("username").value.trim();
+    let password = document.getElementById("password").value.trim();
 
     if (usuario === "" || password === "") {
-        alert("Error, campos vacíos!");
+        alert("Error, campos vacíos.");
         return;
     }
 
     try {
-        const frm_login = document.getElementById("frm_login");
-        const datos = new FormData(frm_login);
+        const datos = new FormData();
+        datos.append('username', usuario);
+        datos.append('password', password);
 
-        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=iniciar_sesion', {
+        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=login', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -102,7 +96,7 @@ async function iniciar_sesion() {
 
         if (!respuesta.ok) {
             const texto = await respuesta.text();
-            console.error("⚠️ Error HTTP:", respuesta.status, texto);
+            console.error("Error HTTP:", respuesta.status, texto);
             alert("Error del servidor (" + respuesta.status + ")");
             return;
         }
@@ -114,65 +108,53 @@ async function iniciar_sesion() {
         } else {
             alert(json.msg);
         }
-
     } catch (error) {
-        console.log("🚨 Error en iniciar_sesion():", error);
+        console.log("Error en iniciar_sesion(): " + error);
     }
 }
 
-// -------------------------------------------------------------
-// VER USUARIOS
-// -------------------------------------------------------------
 async function view_users() {
     try {
-        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=ver_usuarios', {
+        let respuesta = await fetch(base_url + 'control/usuarioController.php?tipo=ver_usuarios', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache'
         });
-
-        if (!respuesta.ok) {
-            console.error("Error HTTP:", respuesta.status);
-            return;
-        }
-
         let json = await respuesta.json();
-        let html = "";
 
         if (json && json.length > 0) {
+            let html = '';
             json.forEach((user, index) => {
                 html += `
-                    <tr>
-                        <td>${index + 1}</td>
-                        <td>${user.nro_identidad || ''}</td>
-                        <td>${user.razon_social || ''}</td>
-                        <td>${user.correo || ''}</td>
-                        <td>${user.rol || ''}</td>
-                        <td>${user.estado || ''}</td>
-                        <td>
-                            <a href="${base_url}edit-user/${user.id}">Editar</a> |
-                            <a href="#" onclick="eliminarUser(${user.id})" style="color:red;">Eliminar</a>
-                        </td>
-                    </tr>`;
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${user.nro_identidad || ''}</td>
+                    <td>${user.razon_social || ''}</td>
+                    <td>${user.correo || ''}</td>
+                    <td>${user.rol || ''}</td>
+                    <td>${user.estado || ''}</td>
+                    <td>
+                        <a href="${base_url}edit-user/${user.id}">Editar</a> |
+                        <a href="#" onclick="eliminarUser(${user.id})" style="color:red;">Eliminar</a>
+                    </td>
+                </tr>`;
             });
+            document.getElementById('content_users').innerHTML = html;
         } else {
-            html = '<tr><td colspan="6">No hay usuarios disponibles</td></tr>';
+            document.getElementById('content_users').innerHTML =
+                '<tr><td colspan="6">No hay usuarios disponibles</td></tr>';
         }
-
-        document.getElementById('content_users').innerHTML = html;
-
     } catch (error) {
-        console.log("Error al cargar usuarios:", error);
+        console.log(error);
         document.getElementById('content_users').innerHTML =
             '<tr><td colspan="6">Error al cargar los usuarios</td></tr>';
     }
 }
 
-if (document.getElementById('content_users')) view_users();
+if (document.getElementById('content_users')) {
+    view_users();
+}
 
-// -------------------------------------------------------------
-// EDITAR USUARIO
-// -------------------------------------------------------------
 async function edit_users() {
     try {
         let id_persona = document.getElementById('id_persona').value;
@@ -187,25 +169,25 @@ async function edit_users() {
         });
 
         let json = await respuesta.json();
+
         if (!json.status) {
             alert(json.msg);
             return;
         }
 
-        const data = json.data;
-        document.getElementById('nro_identidad').value = data.nro_identidad;
-        document.getElementById('razon_social').value = data.razon_social;
-        document.getElementById('telefono').value = data.telefono;
-        document.getElementById('correo').value = data.correo;
-        document.getElementById('departamento').value = data.departamento;
-        document.getElementById('provincia').value = data.provincia;
-        document.getElementById('distrito').value = data.distrito;
-        document.getElementById('cod_postal').value = data.cod_postal;
-        document.getElementById('direccion').value = data.direccion;
-        document.getElementById('rol').value = data.rol;
+        document.getElementById('nro_identidad').value = json.data.nro_identidad;
+        document.getElementById('razon_social').value = json.data.razon_social;
+        document.getElementById('telefono').value = json.data.telefono;
+        document.getElementById('correo').value = json.data.correo;
+        document.getElementById('departamento').value = json.data.departamento;
+        document.getElementById('provincia').value = json.data.provincia;
+        document.getElementById('distrito').value = json.data.distrito;
+        document.getElementById('cod_postal').value = json.data.cod_postal;
+        document.getElementById('direccion').value = json.data.direccion;
+        document.getElementById('rol').value = json.data.rol;
 
     } catch (error) {
-        console.log('Oops, ocurrió un error: ' + error);
+        console.log('Ocurrió un error: ' + error);
     }
 }
 
@@ -214,32 +196,23 @@ if (document.querySelector('#frm_edit_user')) {
     frm_user.onsubmit = function (e) {
         e.preventDefault();
         validar_form("actualizar");
-    }
+    };
 }
 
-// -------------------------------------------------------------
-// ACTUALIZAR USUARIO
-// -------------------------------------------------------------
 async function actualizarUsuario() {
-    try {
-        const datos = new FormData(frm_edit_user);
-        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=actualizar', {
-            method: 'POST',
-            mode: 'cors',
-            cache: 'no-cache',
-            body: datos
-        });
+    const datos = new FormData(frm_edit_user);
+    let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=actualizar', {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: datos
+    });
+    let json = await respuesta.json();
 
-        let json = await respuesta.json();
-
-        if (!json.status) {
-            alert("Ocurrió un error al actualizar, inténtelo nuevamente");
-            console.log(json.msg);
-            return;
-        }
-
+    if (!json.status) {
+        alert("Ocurrió un error al actualizar, inténtelo nuevamente.");
+        console.log(json.msg);
+    } else {
         alert(json.msg);
-    } catch (error) {
-        console.log("Error en actualizarUsuario():", error);
     }
 }
