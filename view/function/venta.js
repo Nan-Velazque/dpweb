@@ -19,4 +19,4 @@ productos_venta .id2=producto2;
 console.log(productos_venta);
 
 productos_venta.splice(id, 1);
-console.log(productos_venta);
+console.log(productos_venta);0
