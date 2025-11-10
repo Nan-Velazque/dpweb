@@ -99,16 +99,52 @@ async function iniciar_sesion() {
     }
 
     try {
-        const datos = new FormData(frm_login);
-        // Enviar a backend para validar inicio de sesión
-        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=iniciar_sesion', {
-            method: 'POST',
-            mode: 'cors',
-            cache: 'no-cache',
-            body: datos
-        });
-        // -------------------------------
-        let json = await respuesta.json();
+        async function iniciar_sesion() {
+  // Capturar usuario y contraseña
+  let usuario = document.getElementById("username").value;
+  let password = document.getElementById("password").value;
+  if (usuario == "" || password == "") {
+    alert("Error, campos vacíos!");
+    return;
+  }
+
+  try {
+    // 👇 Verifica si el formulario existe
+    const frm_login = document.getElementById("frm_login");
+    const datos = new FormData(frm_login);
+
+    // 👇 Envía al servidor
+    let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=iniciar_sesion', {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      body: datos
+    });
+
+    // ✅ Si el servidor no responde bien, mostramos el texto real del error
+    if (!respuesta.ok) {
+      const texto = await respuesta.text();
+      console.error("⚠️ Error HTTP:", respuesta.status, texto);
+      alert("Error del servidor (" + respuesta.status + ")");
+      return;
+    }
+
+    // ✅ Intentamos convertir a JSON
+    let json = await respuesta.json();
+
+    // ✅ Validar respuesta
+    if (json.status) {
+      location.replace(base_url + 'new-user'); // Redirige si todo está bien
+    } else {
+      alert(json.msg);
+    }
+
+  } catch (error) {
+    console.log("🚨 Error en iniciar_sesion():", error);
+  }
+}
+
+        
         //validamos
         if (json.status) { //true
             location.replace(base_url + 'new-user');// Redirige si es correcto
