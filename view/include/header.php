@@ -46,6 +46,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">shops</a>
+                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo BASE_URL;  ?>libros">libros</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">save</a>
