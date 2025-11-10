@@ -85,11 +85,12 @@ async function registrarUsuario() {
 
 // Función para iniciar sesión
 async function iniciar_sesion() {
-    let usuario = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
+    let usuario = document.getElementById("username").value.trim();
+    let password = document.getElementById("password").value.trim();
 
-    if (usuario == "" || password == "") {
-        alert("Error, campos vacíos!");
+    // Validar campos vacíos
+    if (usuario === "" || password === "") {
+        alert("Error: campos vacíos");
         return;
     }
 
@@ -107,14 +108,17 @@ async function iniciar_sesion() {
 
         let json = await respuesta.json();
 
+        // Validar la respuesta
         if (json.status) {
-            location.replace(base_url + 'new-user');
+            alert("Inicio de sesión exitoso");
+            location.replace(base_url + 'new-user'); // Redirige si es correcto
         } else {
-            alert(json.msg);
+            alert(json.msg || "Usuario o contraseña incorrectos");
         }
 
     } catch (error) {
-        console.log(error);
+        console.log("Error al iniciar sesión: " + error);
+        alert("Error de conexión con el servidor");
     }
 }
 
