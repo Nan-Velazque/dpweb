@@ -118,7 +118,7 @@
   <script>
     const base_url = '<?= BASE_URL; ?>';
   </script>
-  
+  <script src="https://kit.fontawesome.com/a2e8a4d44b.js" crossorigin="anonymous"></script>
 
 </head>
 
