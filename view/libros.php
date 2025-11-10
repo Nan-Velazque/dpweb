@@ -51,3 +51,4 @@
 
 <!-- Enlace al JS -->
 <script src="<?= BASE_URL ?>view/function/libros.js"></script>
+<script src="<?= BASE_URL ?>view/function/venta.js"></script>
