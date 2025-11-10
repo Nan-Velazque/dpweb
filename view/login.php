@@ -118,7 +118,8 @@
   <script>
     const base_url = '<?= BASE_URL; ?>';
   </script>
-  <script src="https://kit.fontawesome.com/a2e8a4d44b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
 </head>
 
