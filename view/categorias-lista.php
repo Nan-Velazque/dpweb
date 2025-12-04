@@ -10,13 +10,13 @@
     <div class="card-body">
       <div class="table-responsive">
 
-        <table class="table table-hover align-middle text-center" style="border: none !important;">
-          <thead style="background:#e6dcff; color:#5e4a80;">
+        <table class="table table-hover align-middle text-center">
+          <thead>
             <tr>
-              <th scope="col" style="border:none;">Nro</th>
-              <th scope="col" style="border:none;">Nombre</th>
-              <th scope="col" style="border:none;">Detalle</th>
-              <th scope="col" style="border:none;">Acciones</th>
+              <th>Nro</th>
+              <th>Nombre</th>
+              <th>Detalle</th>
+              <th>Acciones</th>
             </tr>
           </thead>
 

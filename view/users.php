@@ -10,16 +10,16 @@
     <div class="card-body p-0">
       <div class="table-responsive">
 
-        <table class="table table-hover align-middle text-center mb-0" style="border: none !important;">
-          <thead style="background:#e6dcff; color:#5e4a80;">
+        <table class="table table-hover align-middle text-center mb-0">
+          <thead>
             <tr>
-              <th scope="col" style="border:none;">N°</th>
-              <th scope="col" style="border:none;">DNI</th>
-              <th scope="col" style="border:none;">Nombres y Apellidos</th>
-              <th scope="col" style="border:none;">Correo</th>
-              <th scope="col" style="border:none;">Rol</th>
-              <th scope="col" style="border:none;">Estado</th>
-              <th scope="col" style="border:none;">Acciones</th>
+              <th>N°</th>
+              <th>DNI</th>
+              <th>Nombres y Apellidos</th>
+              <th>Correo</th>
+              <th>Rol</th>
+              <th>Estado</th>
+              <th>Acciones</th>
             </tr>
           </thead>
 

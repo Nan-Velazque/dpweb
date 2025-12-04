@@ -131,11 +131,7 @@
               </a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="<?= BASE_URL ?>productos">
-                <i class="bi bi-box-seam"></i> View-Client
-              </a>
-            </li>
+            
 
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE_URL ?>new-producto">
@@ -162,7 +158,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="<?= BASE_URL ?>productos">
                 <i class="bi bi-cart3"></i> Sales
               </a>
             </li>
