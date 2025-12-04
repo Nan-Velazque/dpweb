@@ -1,9 +1,10 @@
 <!-- inicio de cuerpo de pagina -->
 <div class="container mt-5" style="max-width: 700px;">
-  <div class="card shadow-lg border-3 border-primary rounded-4">
-    <div class="card-header bg-primary text-white text-center fw-bold fs-4">
-      <i class="bi bi-tags-fill me-2"></i> Registrar Categoría
-    </div>
+  <div class="card shadow-lg border-3  rounded-4">
+  <div class="card-header text-center fs-4 fw-bold"
+            style="background: #ebd7e1ff; color: #5e3b5e;">
+            Nueva Categoría
+        </div>
 
     <form id="frm_categorie" action="" method="">
       <div class="card-body">
@@ -23,16 +24,16 @@
 
         <div class="d-flex justify-content-center gap-3 mt-4">
           <button type="submit" class="btn btn-primary">
-            <i class="bi bi-save-fill me-1"></i> Registrar
+           Registrar
           </button>
           <button type="reset" class="btn btn-info text-white">
-            <i class="bi bi-eraser-fill me-1"></i> Limpiar
+             Limpiar
           </button>
           <button type="button" class="btn btn-danger">
-            <i class="bi bi-x-circle-fill me-1"></i> Cancelar
+           Cancelar
           </button>
           <a href="<?php echo BASE_URL; ?>categorias-lista" class="btn btn-success">
-            <i class="bi bi-card-list me-1"></i> Ver
+            Ver
           </a>
         </div>
       </div>
