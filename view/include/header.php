@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Huber Araujo</title>
+  <title>Nan-Vlzqu3</title>
 
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>view/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -29,7 +29,7 @@
   }
 
   .navbar-brand {
-    color: #b35dff !important;
+    color: #c0a0dbff !important;
     font-weight: 600;
     font-size: 1.2rem;
   }
