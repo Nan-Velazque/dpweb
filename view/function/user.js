@@ -84,7 +84,7 @@ function cancelar() {
 }
 
 async function iniciar_sesion() {
-    let usuario = document.getElementById("username").value;
+    let usuario = document.getElementById("nro_identidad").value;
     let password = document.getElementById("password").value;
 
     if (usuario == "" || password == "") {

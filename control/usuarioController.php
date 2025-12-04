@@ -40,7 +40,7 @@ if ($tipo == "registrar") {
 }
 
 if($tipo == "iniciar_sesion"){
-    $nro_identidad = $_POST['username'];
+    $nro_identidad = $_POST['nro_identidad'];
     $password = $_POST['password'];
     if ($nro_identidad == "" || $password == "") {
         $respuesta = array('status' => false, 'msg' => 'Error, campos vacios');

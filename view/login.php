@@ -178,7 +178,7 @@
       <form id="frm_login">
 
         <div class="input-box">
-          <input type="text" id="username" name="username" required>
+          <input type="text" id="nro_identidad" name="nro_identidad" required>
           <label for="">Usuario</label>
         </div>
 
