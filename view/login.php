@@ -11,158 +11,167 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
     }
 
     body {
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      background: radial-gradient(circle at top, #8b078bff, #000);
-      background-color:  #2c777cff;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-blend-mode: overlay;
-      
-    }
-
-    .container {
-      position: relative;
-      width: 750px;
-      height: 450px;
-      border: 2px solid #00aaff;
-      box-shadow: 0 0 25px #00aaff;
-      border-radius: 20px;
+      height: 100vh;
+      background: linear-gradient(135deg, #0a0f1f, #051122, #02050a);
       overflow: hidden;
-      backdrop-filter: blur(6px);
     }
 
-    .form-box {
+    /* Fondo animado */
+    .bg-circles span {
       position: absolute;
-      top: 0;
-      left: 0;
-      padding: 0 40px;
-      width: 50%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      background: rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      background: rgba(0, 170, 255, 0.12);
+      animation: float 12s infinite ease-in-out;
     }
 
-    .form-box h2 {
-      font-size: 2rem;
+    .bg-circles span:nth-child(1) {
+      width: 260px;
+      height: 260px;
+      top: -50px;
+      left: -80px;
+    }
+
+    .bg-circles span:nth-child(2) {
+      width: 180px;
+      height: 180px;
+      right: -40px;
+      top: 120px;
+    }
+
+    .bg-circles span:nth-child(3) {
+      width: 300px;
+      height: 300px;
+      bottom: -90px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-30px) scale(1.05);
+      }
+    }
+
+    /* Caja principal */
+    .login-wrapper {
+      width: 420px;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      border: 1px solid rgba(0, 170, 255, 0.3);
+      box-shadow: 0 0 35px rgba(0, 170, 255, 0.2);
+      animation: fadeIn 0.8s ease both;
+      z-index: 10;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .login-wrapper h2 {
       text-align: center;
-      color: #00aaff;
-      text-shadow: 0 0 8px #00aaff;
+      color: #00c3ff;
+      margin-bottom: 25px;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px #009dff;
     }
 
-    .input-box {
+    /* Campos */
+    .field {
+      margin-bottom: 22px;
       position: relative;
-      width: 100%;
-      height: 50px;
-      margin-top: 25px;
-      color: white;
-      font-size: 1.1rem;
     }
 
-    .input-box input {
+    .field input {
       width: 100%;
-      height: 100%;
-      background: transparent;
-      border: none;
-      outline: none;
+      padding: 12px 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 170, 255, 0.3);
+      border-radius: 10px;
+      color: #e9f6ff;
       font-size: 1rem;
-      color: #e6f7ff;
-      border-bottom: 2px solid #00aaff;
-      padding-right: 24px;
+      outline: none;
+      transition: 0.3s;
     }
 
-    .input-box label {
+    .field input:focus {
+      border-color: #00c3ff;
+      background: rgba(0, 170, 255, 0.1);
+      box-shadow: 0 0 12px rgba(0, 170, 255, 0.3);
+    }
+
+    .field label {
       position: absolute;
       top: 50%;
-      left: 0;
+      left: 15px;
       transform: translateY(-50%);
+      color: #aad7ff;
       pointer-events: none;
-      transition: .5s;
-      color: #aaa;
+      transition: 0.3s;
+      opacity: 0.7;
     }
 
-    .input-box input:focus~label,
-    .input-box input:valid~label {
-      top: -5px;
-      color: #00aaff;
-      font-size: 0.9rem;
+    .field input:focus + label,
+    .field input:valid + label {
+      top: -8px;
+      font-size: 0.75rem;
+      color: #00c3ff;
+      background: #051122;
+      padding: 0 5px;
+      opacity: 1;
     }
 
+    /* Botón */
     .btn {
-      position: relative;
       width: 100%;
-      height: 45px;
-      background: linear-gradient(90deg, #00aaff, #0077ff);
+      padding: 12px;
+      margin-top: 15px;
       border: none;
-      border-radius: 40px;
-      cursor: pointer;
-      font-weight: 600;
+      background: linear-gradient(90deg, #00c6ff, #008dff);
       color: white;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
       letter-spacing: 1px;
       transition: 0.3s;
-      margin-top: 20px;
     }
 
     .btn:hover {
-      box-shadow: 0 0 15px #00aaff;
-      transform: scale(1.03);
+      box-shadow: 0 0 15px #00baff;
+      transform: scale(1.02);
     }
 
-    .info-content {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-      width: 50%;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      text-align: right;
-      padding: 0 40px 60px 100px;
-      color: #e6f7ff;
-      background: linear-gradient(135deg, #002233, #001a26);
+    /* Logo inferior */
+    .login-logo {
+      margin-top: 25px;
+      text-align: center;
     }
 
-    .info-content h2 {
-      color: #00aaff;
-      text-transform: uppercase;
-      font-size: 2rem;
-      line-height: 1.3;
-      text-shadow: 0 0 10px #00aaff;
+    .login-logo img {
+      width: 110px;
+      filter: drop-shadow(0 0 10px #00c3ff);
     }
 
-    .info-content p {
-      margin-top: 15px;
-      font-size: 1rem;
-      color: #b8dfff;
-    }
-
-    .info-content img {
-      width: 160px;
-      align-self: flex-end;
-      margin-top: 20px;
-      filter: drop-shadow(0 0 10px #00aaff);
-    }
-
-    .contai {
-      position: absolute;
-      right: 0;
-      top: -5px;
-      height: 600px;
-      width: 850px;
-      background: linear-gradient(450deg, #002233, #00aaff);
-      transform: rotate(10deg) skewY(40deg);
-      transform-origin: bottom right;
-      opacity: 0.2;
-    }
   </style>
 
   <script>
@@ -171,38 +180,42 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="contai"></div>
-    <div class="form-box Login">
-      <h2>Acceso HuberStore</h2>
-      <form id="frm_login">
 
-        <div class="input-box">
-          <input type="text" id="nro_identidad" name="nro_identidad" required>
-          <label for="">Usuario</label>
-        </div>
+  <!-- Fondo animado -->
+  <div class="bg-circles">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-        <div class="input-box">
-          <input type="password" id="password" name="password" required>
-          <label for="">Contraseña</label>
-        </div>
+  <div class="login-wrapper">
+    <h2>Acceso HuberStore</h2>
 
-        <div class="input-box">
-          <button class="btn" type="button" onclick="iniciar_sesion();">Iniciar Sesión</button>
-        </div>
+    <form id="frm_login">
 
-      </form>
-    </div>
+      <div class="field">
+        <input type="text" id="nro_identidad" name="nro_identidad" required>
+        <label>Usuario</label>
+      </div>
 
-    <div class="info-content">
-      <h2>Bienvenido a HuberStore</h2>
-      <p>Tu sistema de gestión para la venta de computadoras, accesorios y tecnología avanzada.</p>
-      <img src="https://static.vecteezy.com/system/resources/previews/006/244/213/non_2x/initial-letter-m-b-logo-design-graphic-alphabet-symbol-for-corporate-business-identity-vector.jpg" alt="Logo HuberStore">
+      <div class="field">
+        <input type="password" id="password" name="password" required>
+        <label>Contraseña</label>
+      </div>
+
+      <button class="btn" type="button" onclick="iniciar_sesion();">
+        Iniciar Sesión
+      </button>
+    </form>
+
+    <div class="login-logo">
+      <img src="https://static.vecteezy.com/system/resources/previews/006/244/213/non_2x/initial-letter-m-b-logo-design-graphic-alphabet-symbol-for-corporate-business-identity-vector.jpg" alt="Logo">
     </div>
   </div>
 
   <script src="<?= BASE_URL; ?>view/function/user.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>
