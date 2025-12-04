@@ -92,13 +92,13 @@
 
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="new-user">
-                <i class="bi bi-house-door"></i> Home
+                Home
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE_URL ?>users">
-                <i class="bi bi-person-square"></i> Users
+               Users
               </a>
             </li>
 
@@ -106,37 +106,37 @@
 
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE_URL ?>new-producto">
-                <i class="bi bi-box-seam"></i> Products
+                Products
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE_URL ?>new-categoria">
-                <i class="bi bi-menu-button-wide-fill"></i> Categories
+                 Categories
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE_URL ?>clientes-new">
-                <i class="bi bi-people"></i> Clients
+               Clients
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <i class="bi bi-shop"></i> Shops
+               Shops
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE_URL ?>productos">
-                <i class="bi bi-cart3"></i> Sales
+               Sales
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE_URL ?>proveedor-new">
-                <i class="bi bi-file-person"></i> Proveedor
+                Proveedor
               </a>
             </li>
           </ul>
