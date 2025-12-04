@@ -18,60 +18,31 @@
 <style>
   body {
     font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(to right, #f6e6f8, #e5f0ff);
+    background: linear-gradient(to right, #e2daf0ff);
   }
 
   /* Navbar estilo femenino pastel */
   .navbar {
-    background: #ffffff !important;
-    border-bottom: 2px solid #f4d9ff;
-    box-shadow: 0 4px 15px rgba(196, 140, 255, 0.15);
+    background: #ebd8e8ff !important;
+    
   }
 
   .navbar-brand {
-    color: #c0a0dbff !important;
+    color: #171718ff !important;
     font-weight: 600;
     font-size: 1.2rem;
   }
 
   .navbar-nav .nav-link {
-    color: #8b6c9c !important;
+    color: #1b1b1bff !important;
     font-weight: 500;
     padding: 10px 14px;
-    border-radius: 8px;
-    transition: all 0.25s ease;
     font-size: 0.95rem;
   }
-
-  .navbar-nav .nav-link .bi {
-    color: #b27ad6 !important;
-  }
-
-  .navbar-nav .nav-link:hover {
-    background-color: #f3e6ff;
-    color: #a259d4 !important;
-  }
-
-  .navbar-nav .nav-link:hover .bi {
-    color: #a259d4 !important;
-  }
-
+  
   /* Dropdown pastel */
   .dropdown-menu {
     background: #ffffff;
-    border-radius: 12px;
-    border: 1px solid #eccaff;
-    box-shadow: 0 4px 14px rgba(157, 114, 197, 0.15);
-  }
-
-  .dropdown-item {
-    color: #7d648f;
-    transition: all 0.25s ease;
-  }
-
-  .dropdown-item:hover {
-    background: #f4e9ff;
-    color: #a259d4;
   }
 
   .dropdown-item .bi {
@@ -90,12 +61,12 @@
 
   /* Ícono usuario */
   .navbar .dropdown-toggle {
-    color: #9a76b8 !important;
+    color: #171718ff !important;
     font-weight: 600;
   }
 
   .navbar-toggler {
-    border-color: #d9b6ff !important;
+    border-color: #141414ff !important;
   }
 
   .navbar-toggler-icon {
