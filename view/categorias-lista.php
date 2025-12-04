@@ -1,19 +1,22 @@
 <div class="container mt-5" style="max-width: 900px;">
-  <div class="card shadow-lg border-3 border-primary rounded-4">
+  <div class="card shadow-lg border-0 rounded-4">
 
-    <div class="card-header bg-primary text-white text-center fw-bold fs-4">
+    <!-- Header pálido -->
+    <div class="card-header text-center fw-bold fs-4" 
+         style="background: #c9b7ff; color: white;">
       Lista de Categorías
     </div>
 
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-striped table-bordered align-middle text-center">
-          <thead class="table-primary">
+
+        <table class="table table-hover align-middle text-center" style="border: none !important;">
+          <thead style="background:#e6dcff; color:#5e4a80;">
             <tr>
-              <th scope="col">Nro</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Detalle</th>
-              <th scope="col">Acciones</th>
+              <th scope="col" style="border:none;">Nro</th>
+              <th scope="col" style="border:none;">Nombre</th>
+              <th scope="col" style="border:none;">Detalle</th>
+              <th scope="col" style="border:none;">Acciones</th>
             </tr>
           </thead>
 
@@ -22,6 +25,7 @@
           </tbody>
 
         </table>
+
       </div>
     </div>
 

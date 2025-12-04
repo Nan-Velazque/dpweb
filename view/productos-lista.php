@@ -1,32 +1,42 @@
 <div class="container mt-5">
   <div class="card shadow-lg border-0">
-    <div class="card-header text-center fs-5 fw-bold">
+
+    <!-- Header pálido -->
+    <div class="card-header text-center fs-5 fw-bold"
+      style="background: #c9b7ff; color: white;">
       Lista de Productos
     </div>
 
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-hover align-middle text-center table-bordered">
-          <thead class="table-primary">
+
+        <table class="table table-hover align-middle text-center"
+          style="border: none !important;">
+
+          <thead style="background:#e6dcff; color:#5e4a80;">
             <tr>
-              <th>Nro</th>
-              <th>Código</th>
-              <th>Nombre</th>
-              <th>Precio</th>
-              <th>Stock</th>
-              <th>Categoría</th>
-              <th>Proveedor</th>
-              <th>Vencimiento</th>
-              <th>Código Barra</th>
-              <th>Acciones</th>
+              <th style="border:none;">Nro</th>
+              <th style="border:none;">Código</th>
+              <th style="border:none;">Nombre</th>
+              <th style="border:none;">Precio</th>
+              <th style="border:none;">Stock</th>
+              <th style="border:none;">Categoría</th>
+              <th style="border:none;">Proveedor</th>
+              <th style="border:none;">Vencimiento</th>
+              <th style="border:none;">Código Barra</th>
+              <th style="border:none;">Acciones</th>
             </tr>
           </thead>
+
           <tbody id="content_productos">
             <!-- Filas dinámicas generadas con JavaScript -->
           </tbody>
+
         </table>
+
       </div>
     </div>
+
   </div>
 </div>
 

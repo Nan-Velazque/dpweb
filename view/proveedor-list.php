@@ -1,30 +1,39 @@
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
   <div class="card shadow-lg border-0 w-100">
-    <div class="card-header bg-primary text-white text-center fs-4 fw-bold">
-      <i class="bi bi-truck text-warning me-2"></i> Lista de Proveedores
+
+    <!-- Header pálido -->
+    <div class="card-header text-white text-center fs-4 fw-bold" 
+         style="background: #c9b7ff;">
+      Lista de Proveedores
     </div>
 
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-striped table-hover text-center align-middle border border-primary">
-          <thead class="table-primary">
+
+        <table class="table table-striped table-hover text-center align-middle"
+               style="border: none !important;">
+          
+          <thead style="background:#e6dcff; color:#5e4a80;">
             <tr>
-              <th><i class="bi bi-hash text-secondary"></i> Nro</th>
-              <th><i class="bi bi-credit-card text-success"></i> DNI</th>
-              <th><i class="bi bi-person-badge text-info"></i> Nombres y Apellidos</th>
-              <th><i class="bi bi-envelope text-warning"></i> Correo</th>
-              <th><i class="bi bi-person-gear text-danger"></i> Rol</th>
-              <th><i class="bi bi-toggle-on text-success"></i> Estado</th>
-              <th><i class="bi bi-gear text-dark"></i> Acciones</th>
+              <th style="border: none;">Nro</th>
+              <th style="border: none;">DNI</th>
+              <th style="border: none;">Nombres y Apellidos</th>
+              <th style="border: none;">Correo</th>
+              <th style="border: none;">Rol</th>
+              <th style="border: none;">Estado</th>
+              <th style="border: none;">Acciones</th>
             </tr>
           </thead>
 
           <tbody id="content_proveedor">
             <!-- Filas dinámicas generadas con JavaScript -->
           </tbody>
+
         </table>
+
       </div>
     </div>
+
   </div>
 </div>
 
