@@ -13,59 +13,101 @@
     const base_url = '<?php echo BASE_URL; ?>';
   </script>
 
-  <style>
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(to right, #4c4ae2ff, #cf13feff);
-    }
 
-
-    /* Estilo de barra de navegación */
-    .navbar {
-      background-color: #0d6efd !important;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-    }
-
-    .navbar-brand {
-      color: #fff !important;
-      font-weight: 600;
-    }
-
-    .navbar-nav .nav-link {
-      color: #fff !important;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 12px;
-      transition: background-color 0.3s ease;
-    }
-
-    .navbar-nav .nav-link:hover {
-      background-color: rgba(255, 255, 255, 0.15);
-      border-radius: 6px;
-    }
-
-    .navbar .bi {
-      color: #fff;
-      font-size: 1rem;
-    }
-
-    .dropdown-menu {
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .dropdown-item:hover {
-      background-color: #f2f2f2;
-    }
-  </style>
 </head>
+<style>
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(to right, #f6e6f8, #e5f0ff);
+  }
+
+  /* Navbar estilo femenino pastel */
+  .navbar {
+    background: #ffffff !important;
+    border-bottom: 2px solid #f4d9ff;
+    box-shadow: 0 4px 15px rgba(196, 140, 255, 0.15);
+  }
+
+  .navbar-brand {
+    color: #b35dff !important;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  .navbar-nav .nav-link {
+    color: #8b6c9c !important;
+    font-weight: 500;
+    padding: 10px 14px;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+    font-size: 0.95rem;
+  }
+
+  .navbar-nav .nav-link .bi {
+    color: #b27ad6 !important;
+  }
+
+  .navbar-nav .nav-link:hover {
+    background-color: #f3e6ff;
+    color: #a259d4 !important;
+  }
+
+  .navbar-nav .nav-link:hover .bi {
+    color: #a259d4 !important;
+  }
+
+  /* Dropdown pastel */
+  .dropdown-menu {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #eccaff;
+    box-shadow: 0 4px 14px rgba(157, 114, 197, 0.15);
+  }
+
+  .dropdown-item {
+    color: #7d648f;
+    transition: all 0.25s ease;
+  }
+
+  .dropdown-item:hover {
+    background: #f4e9ff;
+    color: #a259d4;
+  }
+
+  .dropdown-item .bi {
+    color: #a87bd6 !important;
+    margin-right: 6px;
+  }
+
+  .dropdown-item.text-danger {
+    color: #d96a72 !important;
+  }
+
+  .dropdown-item.text-danger:hover {
+    background: #ffe6e9;
+    color: #c9555f !important;
+  }
+
+  /* Ícono usuario */
+  .navbar .dropdown-toggle {
+    color: #9a76b8 !important;
+    font-weight: 600;
+  }
+
+  .navbar-toggler {
+    border-color: #d9b6ff !important;
+  }
+
+  .navbar-toggler-icon {
+    filter: hue-rotate(45deg) brightness(1.4);
+  }
+</style>
+
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg" data-bs-theme="light">
+
       <div class="container-fluid">
         <a class="navbar-brand" href="#"><i class="bi bi-house-door me-1"></i> LOGO</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

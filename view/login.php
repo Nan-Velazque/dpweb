@@ -88,11 +88,11 @@
 
     .login-wrapper h2 {
       text-align: center;
-      color: #00c3ff;
+      color: #00ff15ff;
       margin-bottom: 25px;
       font-size: 2rem;
       letter-spacing: 2px;
-      text-shadow: 0 0 10px #009dff;
+      text-shadow: 0 0 10px #ea00ffff;
     }
 
     /* Campos */
@@ -189,7 +189,7 @@
   </div>
 
   <div class="login-wrapper">
-    <h2>Acceso HuberStore</h2>
+    <h2>Tienda</h2>
 
     <form id="frm_login">
 
@@ -209,7 +209,7 @@
     </form>
 
     <div class="login-logo">
-      <img src="https://static.vecteezy.com/system/resources/previews/006/244/213/non_2x/initial-letter-m-b-logo-design-graphic-alphabet-symbol-for-corporate-business-identity-vector.jpg" alt="Logo">
+      <img src="https://th.bing.com/th/id/OIP.Y-t7GEC9ubF9gNHPQDdrKgHaHa?w=203&h=202&c=7&r=0&o=7&cb=ucfimg2&pid=1.7&rm=3&ucfimg=1" alt="Logo">
     </div>
   </div>
 

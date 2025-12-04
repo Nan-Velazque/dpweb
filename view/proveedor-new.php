@@ -8,32 +8,7 @@
         <form id="frm_proveedor" action="" method="">
             <div class="card-body">
 
-                <div class="mb-3 row">
-                    <label for="tipo_documento" class="col-sm-3 col-form-label ">
-                        <i class="bi bi-card-checklist text-primary"></i> Tipo Documento
-                    </label>
-                    <div class="col-sm-9">
-                        <select class="form-select" aria-label="Tipo de documento" id="tipo_documento"
-                            name="tipo_documento" required>
-                            <option value="dni">DNI</option>
-                            <option value="ruc">RUC</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="mb-3 row">
-                    <label for="nro_identidad" class="col-sm-3 col-form-label ">
-                        <i class="bi bi-credit-card text-primary"></i> N° Documento
-                    </label>
-                    <div class="col-sm-9">
-                        <div class="input-group">
-                            <input type="number" class="form-control" id="nro_identidad" name="nro_identidad" required>
-                            <button type="button" class="btn btn-outline-primary" id="btn_buscar_documento">
-                                <i class="bi bi-search"></i> Buscar
-                            </button>
-                        </div>
-                    </div>
-                </div>
+              
 
                 <div class="mb-3 row">
                     <label for="razon_social" class="col-sm-3 col-form-label ">
