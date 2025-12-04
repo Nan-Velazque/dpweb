@@ -18,7 +18,7 @@
 <style>
   body {
     font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(to right, #e2daf0ff);
+    background: linear-gradient(to right, #f7f7f7ff);
   }
 
   /* Navbar estilo femenino pastel */

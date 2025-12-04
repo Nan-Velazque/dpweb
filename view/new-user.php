@@ -1,5 +1,5 @@
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
-    <div class="card shadow-lg border-0 w-75">
+    <div class="card  border-0 w-75">
         <div class="card-header text-center fs-4 fw-bold"
             style="background: #ebd7e1ff; color: #5e3b5e;">
             Nuevo  Usuario
