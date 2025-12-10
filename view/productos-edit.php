@@ -1,7 +1,8 @@
  <div class="container d-flex justify-content-center align-items-center min-vh-100">
     <div class="card shadow-lg border-0 w-75">
-        <div class="card-header bg-primary text-white text-center fs-4 fw-bold">
-            <i class="bi bi-box-seam me-2"></i> Editar Producto
+        <div class="card-header text-white text-center fs-4 fw-bold"
+        style="background-color: #E6D1F2; color: #4B2E83;">
+            Editar Producto
             <?php
             if (isset($_GET["views"])) {
                 $ruta = explode("/", $_GET["views"]);
@@ -16,7 +17,7 @@
 
                 <div class="mb-3 row">
                     <label for="codigo" class="col-sm-2 col-form-label ">
-                        <i class="bi bi-upc text-primary"></i> Código
+                       Código
                     </label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="codigo" name="codigo" required>
@@ -25,7 +26,7 @@
 
                 <div class="mb-3 row">
                     <label for="nombre" class="col-sm-2 col-form-label ">
-                        <i class="bi bi-tag"></i> Nombre
+                        Nombre
                     </label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -34,7 +35,7 @@
 
                 <div class="mb-3 row">
                     <label for="detalle" class="col-sm-2 col-form-label ">
-                        <i class="bi bi-card-text"></i> Detalle
+                         Detalle
                     </label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="detalle" name="detalle" required>
@@ -43,7 +44,7 @@
 
                 <div class="mb-3 row">
                     <label for="precio" class="col-sm-2 col-form-label ">
-                        <i class="bi bi-currency-dollar"></i> Precio
+                         Precio
                     </label>
                     <div class="col-sm-10">
                         <input type="number" step="0.01" class="form-control" id="precio" name="precio" required>
@@ -52,7 +53,7 @@
 
                 <div class="mb-3 row">
                     <label for="stock" class="col-sm-2 col-form-label ">
-                        <i class="bi bi-stack"></i> Stock
+                         Stock
                     </label>
                     <div class="col-sm-10">
                         <input type="number" class="form-control" id="stock" name="stock" required>
@@ -61,7 +62,7 @@
 
                 <div class="mb-3 row">
                     <label for="id_categoria" class="col-sm-2 col-form-label ">
-                        <i class="bi bi-list"></i> Categoría
+                        Categoría
                     </label>
                     <div class="col-sm-10">
                         <select class="form-select" id="id_categoria" name="id_categoria" required>
@@ -72,7 +73,7 @@
 
                 <div class="mb-3 row">
                     <label for="fecha_vencimiento" class="col-sm-2 col-form-label ">
-                        <i class="bi bi-calendar-event"></i> Vencimiento
+                        Vencimiento
                     </label>
                     <div class="col-sm-10">
                         <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" required>
@@ -81,7 +82,7 @@
 
                 <div class="mb-3 row">
                     <label for="imagen" class="col-sm-2 col-form-label ">
-                        <i class="bi bi-image"></i> Imagen
+                      Imagen
                     </label>
                     <div class="col-sm-10">
                         <input type="file" class="form-control" id="imagen" name="imagen" accept="">
@@ -90,7 +91,7 @@
 
                 <div class="mb-3 row">
                     <label for="id_proveedor" class="col-sm-2 col-form-label ">
-                        <i class="bi bi-truck"></i> Proveedor
+                         Proveedor
                     </label>
                     <div class="col-sm-10">
                         <select class="form-select" id="id_proveedor" name="id_proveedor" required>

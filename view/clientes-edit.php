@@ -2,7 +2,7 @@
     <div class="card shadow-lg border-0 w-75">
         <div class="card-header text-white text-center fs-4 fw-bold"
          style="background-color: #E6D1F2; color: #4B2E83;">
-            <i class="bi bi-person-plus-fill text-warning me-2"></i> Editar Cliente
+             Editar Cliente
             <?php
             if (isset($_GET["views"])) {
                 $ruta = explode("/", $_GET["views"]);

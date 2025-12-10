@@ -1,9 +1,9 @@
 <!-- inicio de cuerpo de pagina -->
 <div class="container mt-5" style="max-width: 700px;">
-  <div class="card shadow-lg border-3 border-primary rounded-4">
+  <div class="card shadow-lg border-3  rounded-4">
     <div class="card-header text-white text-center fw-bold fs-4"
      style="background-color: #E6D1F2; color: #4B2E83;">
-      <i class="bi bi-tags-fill me-2"></i> Editar Categoría
+       Editar Categoría
       <?php
                 if (isset($_GET["views"])) {
                     $ruta = explode("/", $_GET["views"]);
