@@ -7,90 +7,92 @@
   <title>Velzqu3</title>
 
   <style>
-    
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
 
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #f3e7ff; /* Lila pastel suave */
-  }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f3e7ff;
+      /* Lila pastel suave */
+    }
 
-  .login-wrapper {
-    width: 380px;
-    padding: 30px;
-    background: white;
-    border-radius: 12px;
-    border: 2px solid #d6b7ff; /* Lila suave */
-  }
+    .login-wrapper {
+      width: 380px;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      border: 2px solid #d6b7ff;
+      /* Lila suave */
+    }
 
-  h2 {
-    text-align: center;
-    color: #a463ff; /* Lila más fuerte */
-    margin-bottom: 20px;
-  }
+    h2 {
+      text-align: center;
+      color: #a463ff;
+      /* Lila más fuerte */
+      margin-bottom: 20px;
+    }
 
-  .field {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-  }
+    .field {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+    }
 
-  .field label {
-    font-size: 14px;
-    color: #6a4d8a;
-    margin-bottom: 5px;
-  }
+    .field label {
+      font-size: 14px;
+      color: #6a4d8a;
+      margin-bottom: 5px;
+    }
 
-  .field input {
-    padding: 10px;
-    border: 1px solid #c9a8ff;
-    border-radius: 8px;
-    outline: none;
-    font-size: 14px;
-  }
+    .field input {
+      padding: 10px;
+      border: 1px solid #c9a8ff;
+      border-radius: 8px;
+      outline: none;
+      font-size: 14px;
+    }
 
-  .field input:focus {
-    border-color: #a463ff;
-  }
+    .field input:focus {
+      border-color: #a463ff;
+    }
 
-  .btn {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    background: #b98bff;
-    color: white;
-    font-size: 15px;
-    border-radius: 8px;
-    cursor: pointer;
-  }
+    .btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: #b98bff;
+      color: white;
+      font-size: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
 
-  .btn:hover {
-    background: #a463ff;
-  }
+    .btn:hover {
+      background: #a463ff;
+    }
 
-  .login-logo {
-    margin-top: 20px;
-    text-align: center;
-  }
+    .login-logo {
+      margin-top: 20px;
+      text-align: center;
+    }
 
-  .login-logo img {
-    width: 90px;
-  }
-</style>
+    .login-logo img {
+      width: 90px;
+    }
+  </style>
 
 
   </style>
 
   <script>
-    const base_url = '<?= BASE_URL;?>';
+    const base_url = '<?= BASE_URL; ?>';
   </script>
 </head>
 
@@ -103,27 +105,25 @@
     <span></span>
   </div>
 
-  <div class="login-wrapper">
-    <h2>Tienda</h2>
 
-    <form id="frm_login">
+  <form id="frm_login">
 
-      <div class="field">
-        <input type="text" id="nro_identidad" name="nro_identidad" required>
-        <label>Usuario</label>
-      </div>
+    <div class="field">
+      <input type="text" id="nro_identidad" name="nro_identidad" required>
+      <label>Usuario</label>
+    </div>
 
-      <div class="field">
-        <input type="password" id="password" name="password" required>
-        <label>Contraseña</label>
-      </div>
+    <div class="field">
+      <input type="password" id="password" name="password" required>
+      <label>Contraseña</label>
+    </div>
 
-      <button class="btn" type="button" onclick="iniciar_sesion();">
-        Iniciar Sesión
-      </button>
-    </form>
+    <button class="btn" type="button" onclick="iniciar_sesion();">
+      Iniciar Sesión
+    </button>
+  </form>
 
-    
+
   </div>
 
   <script src="<?= BASE_URL; ?>view/function/user.js"></script>
