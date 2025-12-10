@@ -123,9 +123,7 @@
       </button>
     </form>
 
-    <div class="login-logo">
-      <img src="https://th.bing.com/th/id/OIP.Y-t7GEC9ubF9gNHPQDdrKgHaHa?w=203&h=202&c=7&r=0&o=7&cb=ucfimg2&pid=1.7&rm=3&ucfimg=1" alt="Logo">
-    </div>
+    
   </div>
 
   <script src="<?= BASE_URL; ?>view/function/user.js"></script>
