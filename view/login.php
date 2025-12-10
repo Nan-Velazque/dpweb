@@ -7,170 +7,85 @@
   <title>HuberStore</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
+    
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
 
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: linear-gradient(135deg, #0a0f1f, #051122, #02050a);
-      overflow: hidden;
-    }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f3e7ff; /* Lila pastel suave */
+  }
 
-    /* Fondo animado */
-    .bg-circles span {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(0, 170, 255, 0.12);
-      animation: float 12s infinite ease-in-out;
-    }
+  .login-wrapper {
+    width: 380px;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    border: 2px solid #d6b7ff; /* Lila suave */
+  }
 
-    .bg-circles span:nth-child(1) {
-      width: 260px;
-      height: 260px;
-      top: -50px;
-      left: -80px;
-    }
+  h2 {
+    text-align: center;
+    color: #a463ff; /* Lila más fuerte */
+    margin-bottom: 20px;
+  }
 
-    .bg-circles span:nth-child(2) {
-      width: 180px;
-      height: 180px;
-      right: -40px;
-      top: 120px;
-    }
+  .field {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
 
-    .bg-circles span:nth-child(3) {
-      width: 300px;
-      height: 300px;
-      bottom: -90px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+  .field label {
+    font-size: 14px;
+    color: #6a4d8a;
+    margin-bottom: 5px;
+  }
 
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0) scale(1);
-      }
-      50% {
-        transform: translateY(-30px) scale(1.05);
-      }
-    }
+  .field input {
+    padding: 10px;
+    border: 1px solid #c9a8ff;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+  }
 
-    /* Caja principal */
-    .login-wrapper {
-      width: 420px;
-      padding: 40px;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(12px);
-      border-radius: 20px;
-      border: 1px solid rgba(0, 170, 255, 0.3);
-      box-shadow: 0 0 35px rgba(0, 170, 255, 0.2);
-      animation: fadeIn 0.8s ease both;
-      z-index: 10;
-    }
+  .field input:focus {
+    border-color: #a463ff;
+  }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+  .btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #b98bff;
+    color: white;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
 
-    .login-wrapper h2 {
-      text-align: center;
-      color: #00ff15ff;
-      margin-bottom: 25px;
-      font-size: 2rem;
-      letter-spacing: 2px;
-      text-shadow: 0 0 10px #ea00ffff;
-    }
+  .btn:hover {
+    background: #a463ff;
+  }
 
-    /* Campos */
-    .field {
-      margin-bottom: 22px;
-      position: relative;
-    }
+  .login-logo {
+    margin-top: 20px;
+    text-align: center;
+  }
 
-    .field input {
-      width: 100%;
-      padding: 12px 15px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(0, 170, 255, 0.3);
-      border-radius: 10px;
-      color: #e9f6ff;
-      font-size: 1rem;
-      outline: none;
-      transition: 0.3s;
-    }
+  .login-logo img {
+    width: 90px;
+  }
+</style>
 
-    .field input:focus {
-      border-color: #00c3ff;
-      background: rgba(0, 170, 255, 0.1);
-      box-shadow: 0 0 12px rgba(0, 170, 255, 0.3);
-    }
-
-    .field label {
-      position: absolute;
-      top: 50%;
-      left: 15px;
-      transform: translateY(-50%);
-      color: #aad7ff;
-      pointer-events: none;
-      transition: 0.3s;
-      opacity: 0.7;
-    }
-
-    .field input:focus + label,
-    .field input:valid + label {
-      top: -8px;
-      font-size: 0.75rem;
-      color: #00c3ff;
-      background: #051122;
-      padding: 0 5px;
-      opacity: 1;
-    }
-
-    /* Botón */
-    .btn {
-      width: 100%;
-      padding: 12px;
-      margin-top: 15px;
-      border: none;
-      background: linear-gradient(90deg, #00c6ff, #008dff);
-      color: white;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      letter-spacing: 1px;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      box-shadow: 0 0 15px #00baff;
-      transform: scale(1.02);
-    }
-
-    /* Logo inferior */
-    .login-logo {
-      margin-top: 25px;
-      text-align: center;
-    }
-
-    .login-logo img {
-      width: 110px;
-      filter: drop-shadow(0 0 10px #00c3ff);
-    }
 
   </style>
 
