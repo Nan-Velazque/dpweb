@@ -29,7 +29,22 @@ if ($tipo == "registrarTemporal") {
  if ($tipo == "listarTemporal") {
     $respuesta = array('status' => false, 'msg' => 'fallo el controlador');
       $b_producto = $objVenta->buscarTemporal($id_producto);
+ if ($b_producto)
+    $respuesta = array('status' => true , 'msg' => 'actualizado');
+    echo json_encode($respuesta);
+}   
 
-    $lista = $objVenta->buscarTemporales();
-    echo json_encode($lista);
+
+if ($tipo == "actualizar_cantidad") {
+    $id = $_POST['id'];
+    $cantidad = $_POST['cantidad'];
+    $respuesta = array('status' => false, 'msg' => 'fallo el controlador');
+    $consulta =$objVenta->actualizarCantidadTemporalByid($id , $cantidad);
+
+    if ($consulta) {
+        $respuesta = array('status' => true, 'msg' => 'sucess');
+    }else{
+        $respuesta = array('status' => false, 'msg' => 'error');
+    }
+    echo json_encode($respuesta);
 }

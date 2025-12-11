@@ -63,14 +63,14 @@ async function listar_temporales() {
         });
         json = await respuesta.json();
         if (json.status === false) {
-            let listar_temporal= '';
+            let listar_temporal = '';
             json.forEach(t_venta => {
                 listar_temporal += `<tr>
 
                                 <th>${t_venta.nombre}</th>
-                                <th><input type="number" id="" value="${t_venta.cantidad}" style="width:60px;"</th>
+                                <th><input type="number" id="cant_${t_venta.venta}" value="${t_venta.cantidad}" style="width:60px;" " onchage="actualizar_subtotal(${t_venta.id} , ${t_venta.precio});"</th>
                                 <th>${t_venta.precio}</th>
-                                <th>${t_venta.cantidad*t_venta.precio}</th>
+                                <th id="subtotal_${t_venta.id}">S/.${t_venta.cantidad * t_venta.precio}</th>
                                 <th><button class="btn btn-danger btn-sm">Eliminar</button></th>
                                     
 </tr>`;
@@ -79,6 +79,29 @@ async function listar_temporales() {
         }
     } catch (error) {
         console.log("error al cargar productos temporales" + error);
+    }
+    async function actualizar_subtotal(id , precio) {
+        let cantidad = document.getElementById('cant_' + id).value;
+        try {
+            const datos = new FormData();
+            datos.append('id', id);
+            datos.append('cantidad', cantidad);
+            let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=actualizar_cantidad', {
+                method: 'GET',
+                mode: 'cors',
+                cache: 'no-cache',
+                body: datos
+            });
+            json = await respuesta.json();
+            if (json.status) {
+                subtotal = cantidad * precio; 
+                document.getElementById('subtotal_' + id).innerHTML = 'S/.' + subtotal;                
+                
+            }
+        } catch (error) {
+            console.log("error al actualizar cantidad" + error);
+
+        }
     }
 }
 

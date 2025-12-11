@@ -11,10 +11,11 @@ class VentaModel
     }
 
 
- // ---------------------VENTA TEMPORAL--------------//
+    // ---------------------VENTA TEMPORAL--------------//
 
     // ver productos 
-     public function buscarTemporal($id_producto){
+    public function buscarTemporal($id_producto)
+    {
         $consulta = "SELECT * FROM temporal_venta WHERE id_producto = '$id_producto'";
         $sql = $this->conexion->query($consulta);
         return $sql->fetch_object();
@@ -39,29 +40,7 @@ class VentaModel
 
     public function buscarTemporales()
     {
-       $arr_temporal = array();
-        $consulta = "SELECT * FROM temporal_venta";
-        $sql = $this->conexion->query($consulta);
-        while ($objeto = $sql->fetch_object()) {
-            array_push($arr_temporal, $objeto);
-        }
-        return $arr_temporal;
-    }
-
-    public function eliminarTemporalVenta($id){
-        $consulta = "DELETE FROM temporal_venta WHERE id='$id'";
-        $sql = $this->conexion->query($consulta);
-        return $sql;
-    }
-    
-    public function eliminarTemporales(){
-        $consulta = "DELETE FROM temporal_venta";
-        $sql = $this->conexion->query($consulta);
-        return $sql;
-    }
-     public function buscarTemporales1()
-    {
-       $arr_temporal = array();
+        $arr_temporal = array();
         $consulta = "SELECT tv.*,p.nombre FROM temporal_venta tv INNER JOIN product p ON tv.id_producto = p.id";
         $sql = $this->conexion->query($consulta);
         while ($objeto = $sql->fetch_object()) {
@@ -70,8 +49,31 @@ class VentaModel
         return $arr_temporal;
     }
 
+    public function eliminarTemporalVenta($id)
+    {
+        $consulta = "DELETE FROM temporal_venta WHERE id='$id'";
+        $sql = $this->conexion->query($consulta);
+        return $sql;
+    }
 
- // ---------------------VENTAS REGISTRADAS (OFICIALES)--------------//
- 
+    public function eliminarTemporales()
+    {
+        $consulta = "DELETE FROM temporal_venta";
+        $sql = $this->conexion->query($consulta);
+        return $sql;
+    }
+    public function actualizarCantidadTemporalByid($id, $cantidad)
+    {
+        $consulta = "UPDATE temporal_venta SET cantidad='$cantidad' WHERE id ='$id
+'";
+        $sql = $this->conexion->query($consulta);
+        return $sql;
+    }
+
+
+
+
+    // ---------------------VENTAS REGISTRADAS (OFICIALES)--------------//
+
 
 }

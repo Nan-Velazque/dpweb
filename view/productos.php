@@ -33,7 +33,7 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                                 <h6>Producto ejemplo</h6>
                                 <p><strong>Precio:</strong> $15.00</p>
                                 <p><small>Categoría: Ejemplo</small></p>
-                                <button class="btn btn-success btn-sm">Agregar mi calzon</button>
+                                <button class="btn btn-success btn-sm">Agregar</button>
                             </div>
                         </div>
                     </div>
