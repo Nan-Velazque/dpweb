@@ -53,3 +53,32 @@ async function agregar_producto_temporal() {
         console.log("error al agregar producto temporal" + error);
     }
 }
+
+async function listar_temporales() {
+    try {
+        let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=listarTemporal', {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-cache',
+        });
+        json = await respuesta.json();
+        if (json.status === false) {
+            let listar_temporal= '';
+            json.forEach(t_venta => {
+                listar_temporal += `<tr>
+
+                                <th>${t_venta.nombre}</th>
+                                <th><input type="number" id="" value="${t_venta.cantidad}" style="width:60px;"</th>
+                                <th>${t_venta.precio}</th>
+                                <th>${t_venta.cantidad*t_venta.precio}</th>
+                                <th><button class="btn btn-danger btn-sm">Eliminar</button></th>
+                                    
+</tr>`;
+            });
+            document.getElementById('tablaCarrito').innerHTML = listar_temporal;
+        }
+    } catch (error) {
+        console.log("error al cargar productos temporales" + error);
+    }
+}
+

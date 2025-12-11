@@ -13,7 +13,7 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                 <div class="row mb-3">
                     <div class="col-12">
                         <input onkeyup="ListaProductosParaVenta();"
-                            type="text" id="busqueda_venta" class="form-control" placeholder=" Escribe el nombre o código del producto...">
+                            type="text" id="busqueda_venta" class="form-control" placeholder=" Buscar producto por  nombre o código .....">
                         <input type="hidden" id="id_producto_venta">
                         <input type="hidden" id="producto_precio_venta">
                         <input type="hidden" id="producto_cantidad_venta" value="1">
@@ -60,7 +60,7 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                         </thead>
                         <tbody id="tablaCarrito">
                             <tr>
-                                <td colspan="5" class="py-3">01101000 01110101 01100010 01100101 01110010</td>
+                                <td colspan="5" class="py-3"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -84,4 +84,11 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
 
 <script src="<?php echo BASE_URL; ?>view/function/producto.js"></script>
 <script src="<?php echo BASE_URL; ?>view/function/venta.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        ListaProductosParaVenta();
+        listarTemporal();
+    });
+</script>
+
 

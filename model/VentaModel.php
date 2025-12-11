@@ -59,8 +59,19 @@ class VentaModel
         $sql = $this->conexion->query($consulta);
         return $sql;
     }
+     public function buscarTemporales1()
+    {
+       $arr_temporal = array();
+        $consulta = "SELECT tv.*,p.nombre FROM temporal_venta tv INNER JOIN product p ON tv.id_producto = p.id";
+        $sql = $this->conexion->query($consulta);
+        while ($objeto = $sql->fetch_object()) {
+            array_push($arr_temporal, $objeto);
+        }
+        return $arr_temporal;
+    }
 
 
  // ---------------------VENTAS REGISTRADAS (OFICIALES)--------------//
+ 
 
 }
