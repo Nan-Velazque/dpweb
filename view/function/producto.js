@@ -379,7 +379,7 @@ async function ListaProductosParaVenta() {
                                     <p class="mb-1"><strong>Precio:</strong> ${producto.precio || '0'}</p>
                                     <p class="mb-0 small text-muted">Categoría: ${producto.categoria || 'Sin categoría'}</p>
                                         <div class="d-flex justify-content-between mt-2">
-                                            <button class="btn btn-success btn-sm" onclick="agregarAlCarrito(${producto.id})">
+                                            <button class="btn btn-success btn-sm" onclick="agregar_producto_temporal(${producto.id})">
                                                 <i class="fas fa-shopping-cart"></i> Agregar 
                                             </button>
                                                 <button class="btn btn-primary btn-sm" onclick="verDetalles(${producto.id})">

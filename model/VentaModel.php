@@ -31,6 +31,7 @@ class VentaModel
         return 0;
     }
 
+
     public function actualizarCantidadTemporal($id_producto, $cantidad)
     {
         $consulta = "UPDATE temporal_venta SET cantidad='$cantidad' WHERE id_producto ='$id_producto'";
@@ -41,7 +42,7 @@ class VentaModel
     public function buscarTemporales()
     {
         $arr_temporal = array();
-        $consulta = "SELECT tv.*,p.nombre FROM temporal_venta tv INNER JOIN product p ON tv.id_producto = p.id";
+        $consulta = "SELECT t.*,p.nombre FROM temporal_venta t INNER JOIN product p ON t.id_producto = p.id";
         $sql = $this->conexion->query($consulta);
         while ($objeto = $sql->fetch_object()) {
             array_push($arr_temporal, $objeto);
@@ -64,13 +65,12 @@ class VentaModel
     }
     public function actualizarCantidadTemporalByid($id, $cantidad)
     {
-        $consulta = "UPDATE temporal_venta SET cantidad='$cantidad' WHERE id ='$id
-'";
+        $consulta = "UPDATE temporal_venta SET cantidad='$cantidad' WHERE id ='$id'";
         $sql = $this->conexion->query($consulta);
         return $sql;
     }
 
-
+    
 
 
     // ---------------------VENTAS REGISTRADAS (OFICIALES)--------------//
