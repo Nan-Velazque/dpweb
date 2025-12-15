@@ -19,43 +19,43 @@ if ($tipo == "registrarTemporal") {
     if ($b_producto) {
         $nueva_cantidad = $b_producto->cantidad + 1;
         $objVenta->actualizarCantidadTemporal($id_producto, $nueva_cantidad);
-        $respuesta = array('status' => true , 'msg' => 'actualizado');
+        $respuesta = array('status' => true, 'msg' => 'actualizado');
     } else {
         $registro = $objVenta->registrar_temporal($id_producto, $precio, $cantidad);
         $respuesta = array('status' => true, 'msg' => 'registrado');
     }
     echo json_encode($respuesta);
 }
- if ($tipo == "listarTemporal") {
+if ($tipo == "listarTemporal") {
     $respuesta = array('status' => false, 'msg' => 'fallo el controlador');
-      $b_producto = $objVenta->buscarTemporal($id_producto);
- if ($b_producto)
-    $respuesta = array('status' => true , 'msg' => 'actualizado');
+    $b_producto = $objVenta->buscarTemporal($id_producto);
+    if ($b_producto)
+        $respuesta = array('status' => true, 'msg' => 'actualizado');
     echo json_encode($respuesta);
-}   
+}
 
 
 
 
-if ($tipo=="listar_venta_temporal") {
+if ($tipo == "listar_venta_temporal") {
     $respuesta = array('status' => false, 'msg' => 'fallo el controlador');
     $b_producto = $objVenta->buscarTemporales();
     if ($b_producto) {
         $respuesta = array('status' => true, 'data' => $b_producto);
-    }else {
-       $respuesta = array('status' => false, 'msg' => 'no se encontraron datos');
+    } else {
+        $respuesta = array('status' => false, 'msg' => 'no se encontraron datos');
     }
     echo json_encode($respuesta);
 }
 
-if($tipo=="actualizar_cantidad"){
+if ($tipo == "actualizar_cantidad") {
     $id = $_POST['id'];
     $cantidad =  $_POST['cantidad'];
     $respuesta = array('status' => false, 'msg' => 'fallo el controlador');
     $consulta = $objVenta->actualizarCantidadTemporalByid($id, $cantidad);
     if ($consulta) {
         $respuesta = array('status' => true, 'msg' => 'success');
-    }else {
+    } else {
         $respuesta = array('status' => false, 'msg' => 'error');
     }
     echo json_encode($respuesta);

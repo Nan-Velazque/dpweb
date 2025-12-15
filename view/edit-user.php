@@ -1,7 +1,7 @@
-<div class="container d-flex justify-content-center align-items-center min-vh-100">
-  <div class="card shadow-lg border-0 w-75">
-    <div class="card-header bg-primary text-white text-center fs-4 fw-bold"
-      style="background-color: #E6D1F2; color: #4B2E83;">
+ <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-lg border-0 w-75">
+        <div class="card-header text-white text-center fs-4 fw-bold"
+        style="background-color: #E6D1F2; color: #4B2E83;">
       Editar Usuario
       <?php
       if (isset($_GET["views"])) {

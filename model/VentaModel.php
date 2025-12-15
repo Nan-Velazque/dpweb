@@ -70,7 +70,7 @@ class VentaModel
         return $sql;
     }
 
-    
+
 
 
     // ---------------------VENTAS REGISTRADAS (OFICIALES)--------------//

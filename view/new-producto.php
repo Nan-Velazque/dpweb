@@ -1,7 +1,7 @@
 <!-- inicio de cuerpo de pagina -->
-<div class="container d-flex justify-content-center align-items-center min-vh-100">
-  <div class="card shadow-lg border-0 w-75">
-   <div class="card-header text-center fs-4 fw-bold"
+<div class="container mt-5" style="max-width: 700px;">
+  <div class="card shadow-lg border-3  rounded-4">
+  <div class="card-header text-center fs-4 fw-bold"
             style="background: #ebd7e1ff; color: #5e3b5e;">
             Nuevo producto
         </div>

@@ -393,18 +393,18 @@ async function ListaProductosParaVenta() {
                     </div>
                 `;
                 let id = document.getElementById('id_producto_venta');
-        let precio = document.getElementById('producto_precio_venta');
-        let cantidad = document.getElementById('producto_cantidad_venta');
-        id.value =producto.id;
-        precio.value = producto.precio;
-        cantidad.value=1;
+                let precio = document.getElementById('producto_precio_venta');
+                let cantidad = document.getElementById('producto_cantidad_venta');
+                id.value = producto.id;
+                precio.value = producto.precio;
+                cantidad.value = 1;
             });
         } else {
             html = '<div class="col-12"><div class="alert alert-info mb-0">No hay productos disponibles</div></div>';
         }
         contenido = document.getElementById('productos_venta');
         if (contenido) contenido.innerHTML = html;
-        
+
     } catch (error) {
         console.error("Error al cargar productos :", error);
         contenido.innerHTML = '';
