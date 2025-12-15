@@ -120,13 +120,24 @@ async function act_subt_general() {
             json.data.forEach(t => {
                 subtotal_general += (t.precio * t.cantidad);
             });
-            igv = subtotal_general*0.18;
-            total = subtotal_general+igv;
-            document.getElementById('subtotal_general').innerHTML = 'S/. '+subtotal_general;
-            document.getElementById('igv_general').innerHTML = 'S/. '+igv;
-            document.getElementById('total').innerHTML = 'S/. '+total;
+            igv = subtotal_general * 0.18;
+            total = subtotal_general + igv;
+            document.getElementById('subtotal_general').innerHTML = 'S/. ' + subtotal_general;
+            document.getElementById('igv_general').innerHTML = 'S/. ' + igv;
+            document.getElementById('total').innerHTML = 'S/. ' + total;
         }
     } catch (error) {
         console.log("error al cargar productos temporales " + error);
+    }
+
+    async function registrarVenta() {
+        let id_cliente = document.getElementById('id_cliente_venta').value;
+        let fecha_venta = document.getElementById('fehca_venta').value;
+        try {
+
+        } catch (error) {
+            console.log("error al registrar venta: " + error);
+
+        }
     }
 }

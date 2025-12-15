@@ -66,9 +66,9 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                     </table>
                     <div class="row">
                         <div class="col-12 text-end">
-                            <h5>Subtotal: <label id="">$20.00</label></h5>
-                            <h5>IGV: <label id="">$3.60</label></h5>
-                            <h5>Total: <label id="">$23.60</label></h5>
+                            <h5>Subtotal: <label id="">S/.20.00</label></h5>
+                            <h5>IGV: <label id="">S/.3.60</label></h5>
+                            <h5>Total: <label id="">S/.23.60</label></h5>
                         </div>
                     </div>
                 </div>
@@ -83,6 +83,8 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Realizar venta</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                             </div>
+
+                            <!----modal--->
                             <div class="modal-body">
                                 <form id="form_venta">
                                     <div class="row">
@@ -97,6 +99,13 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                                             <div class="col-md-12">
                                                 <label for="cliente_nombre" class="form-label">Nombre del cliente</label>
                                                 <input type="text" class="form-control" id="cliente_nombre" name="cliente_nombre" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="fecha_venta">feacha venta
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" required>
                                             </div>
                                         </div>
                                     </div>
@@ -117,8 +126,10 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
     <script src="<?php echo BASE_URL; ?>view/function/producto.js"></script>
     <script src="<?php echo BASE_URL; ?>view/function/venta.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            ListaProductosParaVenta();
-            listarTemporal();
+        let input = document.getElementById("busqueda_venta");
+        input.addEventListener('keydown', (event) => {
+            if (event.key == 'Enter') {
+                agregar_producto_temporal();
+            }
         });
     </script>
