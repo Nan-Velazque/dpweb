@@ -1,9 +1,12 @@
 <?php
 require_once("../model/VentaModel.php");
 require_once("../model/ProductsModel.php");
+require_once("../model/UsuarioModel.php");
 
 $objProducto = new ProductsModel();
 $objVenta = new VentaModel();
+$objPersona = new UsuarioModel();
+
 
 $tipo = $_GET['tipo'];
 
@@ -57,6 +60,30 @@ if($tipo=="actualizar_cantidad"){
         $respuesta = array('status' => true, 'msg' => 'success');
     }else {
         $respuesta = array('status' => false, 'msg' => 'error');
+    }
+    echo json_encode($respuesta);
+
+    }
+
+if ($tipo == "buscarCliente"){
+    $dni = $_POST['dni'];
+    $respuesta = array('status' => false, 'msg' => 'Cliente no encontrado');
+    $cliente = $objPersona->buscarPersonaPorNroIdentidad($dni);
+    if ($cliente){
+        $respuesta = array('status' => true, 'data' => $cliente);
+    }
+    echo json_encode($respuesta);
+}
+
+if ($tipo == "usuario_sesion"){
+    session_start();
+    $respuesta = array('status' => false, 'msg' => 'No hay usuario en sesión');
+    if (isset($_SESSION['ventas_id']) && !empty($_SESSION['ventas_id'])){
+        $id_sesion = $_SESSION['ventas_id'];
+        $usuario = $objPersona->obtenerUsuarioPorId($id_sesion);
+        if ($usuario){
+            $respuesta = array('status' => true, 'data' => $usuario);
+        }
     }
     echo json_encode($respuesta);
 }
