@@ -1,6 +1,6 @@
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
     <div class="card shadow-lg border-0 w-75">
-       <div class="card-header text-center fs-4 fw-bold"
+        <div class="card-header text-center fs-4 fw-bold"
             style="background: #ebd7e1ff; color: #5e3b5e;">
             Nuevo Proveedor
         </div>
@@ -8,11 +8,22 @@
         <form id="frm_proveedor" action="" method="">
             <div class="card-body">
 
-              
+                <div class="mb-3 row">
+                    <label for="nro_identidad" class="col-sm-3 col-form-label">
+                        N° Documento
+                    </label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control"
+                            id="nro_identidad"
+                            name="nro_identidad"
+                            required>
+                    </div>
+                </div>
+
 
                 <div class="mb-3 row">
                     <label for="razon_social" class="col-sm-3 col-form-label ">
-                       Nombre/Razón Social
+                        Nombre/Razón Social
                     </label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" id="razon_social" name="razon_social" required>
@@ -30,7 +41,7 @@
 
                 <div class="mb-3 row">
                     <label for="correo" class="col-sm-3 col-form-label ">
-                         Correo
+                        Correo
                     </label>
                     <div class="col-sm-9">
                         <input type="email" class="form-control" id="correo" name="correo" required>
@@ -48,7 +59,7 @@
 
                 <div class="mb-3 row">
                     <label for="provincia" class="col-sm-3 col-form-label ">
-                         Provincia
+                        Provincia
                     </label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" id="provincia" name="provincia" required>
@@ -66,7 +77,7 @@
 
                 <div class="mb-3 row">
                     <label for="cod_postal" class="col-sm-3 col-form-label ">
-                         Código Postal
+                        Código Postal
                     </label>
                     <div class="col-sm-9">
                         <input type="number" class="form-control" id="cod_postal" name="cod_postal" required>
