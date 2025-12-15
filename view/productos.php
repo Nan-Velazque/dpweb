@@ -75,61 +75,69 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
 
                 <div class="position-absolute bottom-0 start-0 end-0 p-3 text-center" style="background-color: #f8f9fa; border-top: 1px solid #ccc;">
                     <button type="submit" class="btn btn-success w-10">Realizar Venta</button>
-                </div>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Realizar venta</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                            </div>
 
-                            <!----modal--->
-                            <div class="modal-body">
-                                <form id="form_venta">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="cliente_dni" class="form-label">DNI del cliente</label>
-                                            <input type="text" class="form-control" id="cliente_dni" name="cliente_dni" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <button type="button" class="btn btn-primary mt-4" onclick="buscar_cliente_venta();">Buscar Cliente</button>
-                                        </div>
-                                        <div>
-                                            <div class="col-md-12">
-                                                <label for="cliente_nombre" class="form-label">Nombre del cliente</label>
-                                                <input type="text" class="form-control" id="cliente_nombre" name="cliente_nombre" readonly>
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Launch demo modal
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Realizar venta</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="form_venta">
+                                        <div class="mb-3">
+                                            <label for="cliente_dni" class="form-label text-start d-block">DNI del cliente</label>
+                                            <div class="row g-2">
+                                                <div class="col-8">
+                                                    <input type="text" class="form-control" id="cliente_dni" name="cliente_dni" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10">
+                                                </div>
+                                                <div class="col-4">
+                                                    <button type="button" class="btn btn-primary w-100" onclick="buscar_cliente_venta();">Buscar Cliente</button>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="mb-3 row">
-                                            <label for="fecha_venta">feacha venta
-                                            </label>
-                                            <div class="col-sm-10">
-                                                <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" required>
-                                            </div>
+
+                                        <div class="mb-3">
+                                            <label for="cliente_nombre" class="form-label text-start d-block">Nombre del cliente</label>
+                                            <input type="text" class="form-control" id="cliente_nombre" name="cliente_nombre" readonly>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary"> realizar venta</button>
+
+                                        <div class="mb-3">
+                                            <label for="fecha_vencimiento" class="form-label text-start d-block">Vencimiento</label>
+                                            <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" required>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" onclick="realizar_venta();">realizar venta</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
-
-        </div> <!-- fin row -->
+        </div>
     </div>
 
-    <script src="<?php echo BASE_URL; ?>view/function/producto.js"></script>
-    <script src="<?php echo BASE_URL; ?>view/function/venta.js"></script>
-    <script>
-        let input = document.getElementById("busqueda_venta");
-        input.addEventListener('keydown', (event) => {
-            if (event.key == 'Enter') {
-                agregar_producto_temporal();
-            }
-        });
-    </script>
+</div> <!-- fin row -->
+</div>
+
+<script src="<?php echo BASE_URL; ?>view/function/producto.js"></script>
+<script src="<?php echo BASE_URL; ?>view/function/venta.js"></script>
+<script>
+    let input = document.getElementById("busqueda_venta");
+    input.addEventListener('keydown', (event) => {
+        if (event.key == 'Enter') {
+            agregar_producto_temporal();
+        }
+    });
+</script>
