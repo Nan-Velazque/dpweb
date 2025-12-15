@@ -99,7 +99,7 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                                                     <input type="text" class="form-control" id="cliente_dni" name="cliente_dni" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10">
                                                 </div>
                                                 <div class="col-4">
-                                                    <button type="button" class="btn btn-primary w-100" onclick="buscar_cliente_venta();">Buscar Cliente</button>
+                                                    <button type="button" class="btn btn-info w-100" onclick="buscar_cliente_venta();">Buscar Cliente</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,8 +116,8 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" onclick="realizar_venta();">realizar venta</button>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-success" onclick="registrar_venta();">realizar venta</button>
                                 </div>
                             </div>
                         </div>

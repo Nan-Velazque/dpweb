@@ -90,8 +90,8 @@ class VentaModel
         $sql = $this->conexion->query($consulta);
         return $sql->fetch_object();
     }
-    public function registrar_venta($correlativo, $fecha_venta, $id_cliente , $id_vendedor){
-        $consulta = "INSERT INTO venta (codigo, fecha_venta, id_cliente, id_vendedor) VALUES ('$correlativo', '$fecha_venta', '$id_cliente', '$id_vendedor')";
+    public function registrar_venta($id_venta, $id_producto, $precio, $cantidad){
+        $consulta = "INSERT INTO detalle_venta (id_venta, id_producto, precio , cantidad) VALUES ('$id_venta', '$id_producto', '$precio' , '$cantidad')";
         $sql = $this->conexion->query($consulta);
         if ($sql) {
             return $this->conexion->insert_id;
