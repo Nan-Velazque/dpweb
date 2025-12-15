@@ -134,7 +134,23 @@ async function act_subt_general() {
         let id_cliente = document.getElementById('id_cliente_venta').value;
         let fecha_venta = document.getElementById('fehca_venta').value;
         try {
-
+            const datos = new FormData();
+            datos.append('id_cliente', id_cliente);
+            datos.append('fecha_venta', fecha_venta);
+            let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=registrar_venta', {
+                method: 'POST',
+                mode: 'cors',
+                cache: 'no-cache',
+                body: datos
+            });
+            json = await respuesta.json();
+            if (json.status) {
+                alert("Venta registrada con éxito");
+                console.log("respuesta:", json);
+                window.location.reload();
+            }else {
+                alert(json.msg)
+            }
         } catch (error) {
             console.log("error al registrar venta: " + error);
 
