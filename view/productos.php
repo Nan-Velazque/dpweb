@@ -26,8 +26,8 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                     <div class="col-md-4">
                         <div class="card p-2 border rounded shadow-sm">
                             <div class="border rounded p-2 bg-light d-flex justify-content-center">
-                                <img src="https://images.unsplash.com/photo-1606813909135-0e36269c67be?auto=format&fit=crop&w=400&q=80" 
-                                     alt="Producto ejemplo" class="img-fluid rounded">
+                                <img src="https://images.unsplash.com/photo-1606813909135-0e36269c67be?auto=format&fit=crop&w=400&q=80"
+                                    alt="Producto ejemplo" class="img-fluid rounded">
                             </div>
                             <div class="card-body text-center">
                                 <h6>Producto ejemplo</h6>
@@ -74,12 +74,33 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                 </div>
 
                 <div class="position-absolute bottom-0 start-0 end-0 p-3 text-center" style="background-color: #f8f9fa; border-top: 1px solid #ccc;">
-                    <button type="submit" class="btn btn-danger w-10">Pagar</button>
+                    <button type="submit" class="btn btn-danger w-10">Realizar Venta</button>
                 </div>
             </div>
         </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Launch demo modal
+        </button>
 
-    </div> <!-- fin row -->
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Realizar venta</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="<?php echo BASE_URL; ?>view/function/producto.js"></script>
@@ -90,5 +111,3 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
         listarTemporal();
     });
 </script>
-
-
