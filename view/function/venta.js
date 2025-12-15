@@ -130,3 +130,7 @@ async function act_subt_general() {
         console.log("error al cargar productos temporales " + error);
     }
 }
+
+
+// ---------------------VENTA TEMPORAL--------------//
+
