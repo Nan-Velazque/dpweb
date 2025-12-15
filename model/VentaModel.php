@@ -11,7 +11,7 @@ class VentaModel
     }
 
 
-    // ----------VENTA TEMPORAL---------//
+    // ---------------------VENTA TEMPORAL--------------//
 
     // ver productos 
     public function buscarTemporal($id_producto)
@@ -70,7 +70,7 @@ class VentaModel
         return $sql;
     }
 
-
+    
 
 
     // ---------------------VENTAS REGISTRADAS (OFICIALES)--------------//

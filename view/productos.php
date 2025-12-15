@@ -74,56 +74,51 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                 </div>
 
                 <div class="position-absolute bottom-0 start-0 end-0 p-3 text-center" style="background-color: #f8f9fa; border-top: 1px solid #ccc;">
-                    <button type="submit" class="btn btn-danger w-10">Realizar Venta</button>
+                    <button type="submit" class="btn btn-success w-10">Realizar Venta</button>
                 </div>
-            </div>
-        </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
-        </button>
-
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Realizar venta</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="form_venta">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="cliente_dni" class="form-label">DNI del cliente</label>
-                                <input type="text" class="form-control" id="cliente_dni" name="cliente_dni" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Realizar venta</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                             </div>
-                            <div class="col-md-6">
-                                <button type="button" class="btn btn-primary mt-4" onclick="buscar_cliente_venta();">Buscar Cliente</button>
+                            <div class="modal-body">
+                                <form id="form_venta">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="cliente_dni" class="form-label">DNI del cliente</label>
+                                            <input type="text" class="form-control" id="cliente_dni" name="cliente_dni" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-primary mt-4" onclick="buscar_cliente_venta();">Buscar Cliente</button>
+                                        </div>
+                                        <div>
+                                            <div class="col-md-12">
+                                                <label for="cliente_nombre" class="form-label">Nombre del cliente</label>
+                                                <input type="text" class="form-control" id="cliente_nombre" name="cliente_nombre" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <div>
-                                <div class="col-md-12">
-                                    <label for="cliente_nombre" class="form-label">Nombre del cliente</label>
-                                    <input type="text" class="form-control" id="cliente_nombre" name="cliente_nombre" readonly>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary"> realizar venta</button>
                             </div>
                         </div>
+                    </div>
                 </div>
-                </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary"> realizar venta</button>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
 
-<script src="<?php echo BASE_URL; ?>view/function/producto.js"></script>
-<script src="<?php echo BASE_URL; ?>view/function/venta.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        ListaProductosParaVenta();
-        listarTemporal();
-    });
-</script>
+        </div> <!-- fin row -->
+    </div>
+
+    <script src="<?php echo BASE_URL; ?>view/function/producto.js"></script>
+    <script src="<?php echo BASE_URL; ?>view/function/venta.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            ListaProductosParaVenta();
+            listarTemporal();
+        });
+    </script>
