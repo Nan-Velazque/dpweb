@@ -102,6 +102,18 @@ if ($tipo == "usuario_sesion") {
             //registrar la venta oficial
             $venta = $objVenta->registrar_venta($correlativo, $id_venta , $_cliente, $id_vendedor);
             if ($venta) {
-                
+                //registrar los detalles de la venta 
+                $temporales = $objVenta->buscarTemporales();
+                foreach ($temporales as $temporal) {
+                    $objVenta->registrar_detalle_venta($venta, $temporal->id_producto, $temporal->precio, $temporal->cantidad);
+                }
+                //eliminar los temporales
+                $objVenta->eliminarTemporales();            
+                $respuesta = array('status' => true, 'msg' => 'Venta registrada con exito');
+            }else {
+                $respuesta = array('status' => false, 'msg' => 'Error al registrar la venta');
+            }    
+        echo json_encode($respuesta);    
+
     }
 }
