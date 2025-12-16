@@ -26,7 +26,8 @@
                         Nombre/Razón Social
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="razon_social" name="razon_social" required>
+                        <input type="text" class="form-control" id="razon_social" name="razon_social" required
+                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
                     </div>
                 </div>
 
@@ -53,7 +54,8 @@
                         Departamento
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="departamento" name="departamento" required>
+                        <input type="text" class="form-control" id="departamento" name="departamento" required
+                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
                     </div>
                 </div>
 
@@ -62,7 +64,8 @@
                         Provincia
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="provincia" name="provincia" required>
+                        <input type="text" class="form-control" id="provincia" name="provincia" required
+                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
                     </div>
                 </div>
 
@@ -71,7 +74,8 @@
                         Distrito
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="distrito" name="distrito" required>
+                        <input type="text" class="form-control" id="distrito" name="distrito" required
+                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
                     </div>
                 </div>
 

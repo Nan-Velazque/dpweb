@@ -14,7 +14,8 @@
              Código
           </label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="codigo" name="codigo" required>
+            <input type="text" class="form-control" id="codigo" name="codigo" required
+           oninput="this.value = this.value.replace(/[^0-9]/g, '')">
           </div>
         </div>
 
@@ -23,7 +24,8 @@
             Nombre
           </label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="nombre" name="nombre" required>
+            <input type="text" class="form-control" id="nombre" name="nombre" required
+             oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
           </div>
         </div>
 
@@ -41,7 +43,8 @@
             Precio
           </label>
           <div class="col-sm-10">
-            <input type="number" step="0.01" class="form-control" id="precio" name="precio" required>
+            <input type="number" step="0.01" class="form-control" id="precio" name="precio" required
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
           </div>
         </div>
 
@@ -50,7 +53,8 @@
             Stock
           </label>
           <div class="col-sm-10">
-            <input type="number" class="form-control" id="stock" name="stock" required>
+            <input type="number" class="form-control" id="stock" name="stock" required
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
           </div>
         </div>
 
@@ -67,7 +71,7 @@
 
         <div class="mb-3 row">
           <label for="fecha_vencimiento" class="col-sm-2 col-form-label ">
-            Vencimiento
+            fecha
           </label>
           <div class="col-sm-10">
             <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" required>

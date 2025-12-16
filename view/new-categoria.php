@@ -11,7 +11,8 @@
         <div class="mb-3 row align-items-center">
           <label for="nombre" class="col-sm-3 col-form-label fw-semibold">Nombre:</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la categoría" required>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la categoría" required
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
           </div>
         </div>
 
