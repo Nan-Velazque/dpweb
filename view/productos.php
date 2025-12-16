@@ -111,7 +111,7 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
 
                                         <div class="mb-3">
                                             <label for="cliente_nombre" class="form-label text-start d-block">Nombre del cliente</label>
-                                            <input type="text" class="form-control" id="cliente_nombre" name="cliente_nombre" readonly>
+                                            <input type="text" class="form-control" id="cliente_nombre" name="cliente_nombre">
                                         </div>
 
                                         <div class="mb-3">
@@ -123,10 +123,7 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-success" onclick="registrarVenta();">
-                                        Realizar venta
-                                    </button>
-
+                                    <button type="button" class="btn btn-success" onclick="registrarVenta();">Realizar venta</button>
                                 </div>
                             </div>
                         </div>
