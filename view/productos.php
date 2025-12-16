@@ -1,138 +1,104 @@
-<?php
-$base = defined('BASE_URL') ? BASE_URL : '/';
-?>
+<div class="container-fluid mt-4 row">
 
-<div class="container py-3">
-    <div class="row">
+    <div class="col-7">
+        <div class="card" style="background-color: transparent;">
 
-        <!-- Columna izquierda: Buscador + Productos -->
-        <div class="col-md-8">
-            <div class="border rounded p-3" style="border-width: 2px !important;">
-
-                <!-- Buscador -->
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <input onkeyup="ListaProductosParaVenta();"
-                            type="text" id="busqueda_venta" class="form-control" placeholder=" Buscar producto por  nombre o código .....">
-                        <input type="hidden" id="id_producto_venta">
-                        <input type="hidden" id="producto_precio_venta">
-                        <input type="hidden" id="producto_cantidad_venta" value="1">
-                    </div>
+            <div class="card-body row">
+                <h5 class="card-title col-md-5">Busqueda de Productos</h5>
+                <div class="col-md-7">
+                    <input type="text" class="form-control col-md-12" placeholder="buscar producto por codigo o nombre" id="busqueda_venta" onkeyup="ListaProductosParaVenta();">
+                    <input type="hidden" id="id_producto_venta">
+                    <input type="hidden" id="producto_precio_venta">
+                    <input type="hidden" id="producto_cantidad_venta" value="1">
                 </div>
-
-                <!-- Productos -->
-                <div class="row g-2" id="productos_venta">
-                    <!-- Ejemplo de producto -->
-                    <div class="col-md-4">
-                        <div class="card p-2 border rounded shadow-sm">
-                            <div class="border rounded p-2 bg-light d-flex justify-content-center">
-                                <img src="https://images.unsplash.com/photo-1606813909135-0e36269c67be?auto=format&fit=crop&w=400&q=80"
-                                    alt="Producto ejemplo" class="img-fluid rounded">
-                            </div>
-                            <div class="card-body text-center">
-                                <h6>Producto ejemplo</h6>
-                                <p><strong>Precio:</strong> $15.00</p>
-                                <p><small>Categoría: Ejemplo</small></p>
-                                <button class="btn btn-success btn-sm">Agregar</button>
-                            </div>
+                <br>
+                <br>
+                <br>
+                <div class="row container-fluid" id="productos_venta">
+                    <!--<div class="card m-2 col-3">
+                        <div class="card-body">
+                            <img src="https://www.agenciaeplus.com.br/wp-content/uploads/2021/12/pagina-de-produto.jpg" alt="" width="100%" height="150px">
+                            <p class="card-text">Descripcion del producto</p>
+                            <button class="btn btn-primary">Agregar</button>
                         </div>
-                    </div>
-                    <!-- Productos dinámicos se insertan aquí -->
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Columna derecha: Carrito de compras -->
-        <div class="col-md-4">
-            <div id="carrito_grid" class="p-3 border rounded bg-light shadow-sm position-relative" style="min-height: 500px; display: flex; flex-direction: column;">
-                <h5 class="text-center mb-3">Carrito</h5>
-                <div class="table-responsive">
-                    <table class="table table-sm table-hover align-middle mb-0">
-                        <thead class=" text-center">
-                            <tr>
-                                <th>Producto</th>
-                                <th>Cant.</th>
-                                <th>Precio</th>
-                                <th>Subtotal</th>
-                                <th>Acción</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablaCarrito">
-                            <tr>
-                                <td colspan="5" class="py-3"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="row">
-                        <div class="col-12 text-end">
-                            <h5>Subtotal: <label id="">S/.20.00</label></h5>
-                            <h5>IGV: <label id="">S/.3.60</label></h5>
-                            <h5>Total: <label id="">S/.23.60</label></h5>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="position-absolute bottom-0 start-0 end-0 p-3 text-center" style="background-color: #f8f9fa; border-top: 1px solid #ccc;">
-                    <button type="submit" class="btn btn-success w-10">Realizar Venta</button>
-
-
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Launch demo modal
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Realizar venta</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form id="form_venta">
-                                        <div class="mb-3">
-                                            <label for="cliente_dni" class="form-label text-start d-block">DNI del cliente</label>
-                                            <div class="row g-2">
-                                                <div class="col-8">
-                                                    <input type="text" class="form-control" id="cliente_dni" name="cliente_dni" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10">
-                                                </div>
-                                                <div class="col-4">
-                                                    <button type="button" class="btn btn-info w-100" onclick="buscar_cliente_venta();">Buscar Cliente</button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="cliente_nombre" class="form-label text-start d-block">Nombre del cliente</label>
-                                            <input type="text" class="form-control" id="cliente_nombre" name="cliente_nombre" readonly>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="fecha_vencimiento" class="form-label text-start d-block">Vencimiento</label>
-                                            <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" required>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-success" onclick="registrar_venta();">realizar venta</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    </div>-->
                 </div>
             </div>
         </div>
     </div>
-
-</div> <!-- fin row -->
+    <div class="col-5">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Lista de Compra</h5>
+                <div class="row" style="min-height: auto;">
+                    <div class="col-12">
+                        <table class="table-responsive table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cant.</th>
+                                    <th>P. Unit.</th>
+                                    <th>SubTotal</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lista_compra">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-end">
+                        <h4>Subtotal : <label id="subtotal_general"></label></h4>
+                        <h4>Igv : <label id="igv_general"></label></h4>
+                        <h4>Total : <label id="total"></label></h4>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Realizar Venta</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- Modal -->
+<div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de Venta</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form_venta">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="cliente_dni" class="form-label">DNI del Cliente</label>
+                            <input type="text" class="form-control" id="cliente_dni" name="cliente_dni" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="11">
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary mt-4" onclick="buscar_cliente_venta();">Buscar Cliente</button>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="cliente_nombre" class="form-label">Nombre del Cliente</label>
+                            <input type="text" class="form-control" id="cliente_nombre" name="cliente_nombre" readonly>
+                            <input type="hidden" class="form-control" id="id_cliente_venta">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="fecha_venta">fecha de venta</label>
+                            <input type="datetime" class="form-control" id="fecha_venta" name="fecha_venta" value="<?= date('Y-m-d H:i') ?>">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="registrarVenta();">Registrar Venta</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="<?= BASE_URL ?>view/function/producto.js"></script>
+<script src="<?= BASE_URL ?>view/function/venta.js"></script>
 
-<script src="<?php echo BASE_URL; ?>view/function/producto.js"></script>
-<script src="<?php echo BASE_URL; ?>view/function/venta.js"></script>
 <script>
     let input = document.getElementById("busqueda_venta");
     input.addEventListener('keydown', (event) => {
@@ -140,4 +106,6 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
             agregar_producto_temporal();
         }
     });
+    listar_temporales();
+    act_subt_general();
 </script>
