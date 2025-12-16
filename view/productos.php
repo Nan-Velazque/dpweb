@@ -82,9 +82,9 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
 
 
 
-                    <!-- Button trigger modal -->
+                    <!-- Button trigger modal
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Launch demo modal
+                        Launch demo modal -->
                     </button>
 
                     <!-- Modal -->
@@ -115,15 +115,16 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="fecha_vencimiento" class="form-label text-start d-block">Vencimiento</label>
+                                            <label for="fecha_venta" class="form-label text-start d-block">Fecha de la venta</label>
                                             <input type="date" class="form-control" id="fecha_venta" required>
-
                                         </div>
+
                                     </form>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                     <button type="button" class="btn btn-success" onclick="registrarVenta();">Realizar venta</button>
+
                                 </div>
                             </div>
                         </div>
