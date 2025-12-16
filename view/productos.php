@@ -38,7 +38,7 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                             </div>
                         </div>
                     </div>
-                    <!-- Productos dinámicos se insertan aquí -->
+
                 </div>
 
             </div>
@@ -76,7 +76,10 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                 </div>
 
                 <div class="position-absolute bottom-0 start-0 end-0 p-3 text-center" style="background-color: #f8f9fa; border-top: 1px solid #ccc;">
-                    <button type="submit" class="btn btn-success w-10">Realizar Venta</button>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Realizar Venta
+                    </button>
+
 
 
                     <!-- Button trigger modal -->
@@ -113,13 +116,17 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
 
                                         <div class="mb-3">
                                             <label for="fecha_vencimiento" class="form-label text-start d-block">Vencimiento</label>
-                                            <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" required>
+                                            <input type="date" class="form-control" id="fecha_venta" required>
+
                                         </div>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-success" onclick="registrar_venta();">realizar venta</button>
+                                    <button type="button" class="btn btn-success" onclick="registrarVenta();">
+                                        Realizar venta
+                                    </button>
+
                                 </div>
                             </div>
                         </div>
