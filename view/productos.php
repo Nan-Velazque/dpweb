@@ -13,7 +13,7 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                 <div class="row mb-3">
                     <div class="col-12">
                         <input onkeyup="ListaProductosParaVenta();"
-                            type="text" id="busqueda_venta" class="form-control" placeholder=" Buscar producto por  nombre o código .....">
+                            type="text" id="busqueda_venta" class="form-control" placeholder=" Buscar producto por nombre o código.....">
                         <input type="hidden" id="id_producto_venta">
                         <input type="hidden" id="producto_precio_venta">
                         <input type="hidden" id="producto_cantidad_venta" value="1">
@@ -35,6 +35,10 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                                 <p><small>Categoría: Ejemplo</small></p>
                                 <button type="button" class="btn btn-success btn-sm" onclick="agregar_producto_temporal(<?= $producto->id ?>, <?= $producto->precio ?>, 1)">
                                     Agregar</button>
+                                <button type="button" class="btn btn-primary btn-sm mt-1" onclick="verDetalleProducto(<?= $producto->id ?>)">
+                                    Ver detalles
+                                </button>
+
                             </div>
                         </div>
                     </div>
