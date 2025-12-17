@@ -33,7 +33,7 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                                 <h6>Producto ejemplo</h6>
                                 <p><strong>Precio:</strong> $15.00</p>
                                 <p><small>Categoría: Ejemplo</small></p>
-                                <button type="button" class="btn btn-success btn-sm" onclick="agregar_producto_temporal(<?= $producto->id ?>, <?= $producto->precio ?>, 1)">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="agregar_producto_temporal(<?= $producto->id ?>, <?= $producto->precio ?>, 1)">
                                     Agregar
                                 </button>
                             </div>
