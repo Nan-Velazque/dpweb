@@ -164,6 +164,25 @@ class UsuarioModel {
         return $arr_usuarios;
     }
 
+    public function buscarClientePorDNI($dni) {
+        $consulta = "SELECT id, nro_identidad, razon_social, correo, departamento, provincia, distrito, cod_postal, direccion FROM persona WHERE nro_identidad = ? AND (rol = 'cliente' OR rol = 'Cliente') LIMIT 1";
+        $stmt = $this->conexion->prepare($consulta);
+        if (!$stmt) {
+            error_log("Error en prepare(): " . $this->conexion->error);
+            return null;
+        }
+        $stmt->bind_param("s", $dni);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        if ($resultado && $resultado->num_rows > 0) {
+            $cliente = $resultado->fetch_object();
+            $stmt->close();
+            return $cliente;
+        }
+        $stmt->close();
+        return null;
+    }
+
       public function mostrarProveedores(){
         $arr_usuarios = array();
         $consulta = "SELECT * FROM persona WHERE rol = 'Proveedor'";

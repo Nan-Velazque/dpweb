@@ -9,14 +9,11 @@
             <div class="card-body">
 
                 <div class="mb-3 row">
-                    <label for="nro_identidad" class="col-sm-3 col-form-label">
-                        N° Documento
+                    <label for="nro_identidad" class="col-sm-3 col-form-label ">
+                        DNI
                     </label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control"
-                            id="nro_identidad"
-                            name="nro_identidad"
-                            required>
+                        <input type="number" class="form-control" id="nro_identidad" name="nro_identidad" required>
                     </div>
                 </div>
 

@@ -382,9 +382,7 @@ async function ListaProductosParaVenta() {
                                             <button class="btn btn-success btn-sm" onclick="agregar_producto_temporal(${producto.id})">
                                                 <i class="fas fa-shopping-cart"></i> Agregar 
                                             </button>
-                                                <button class="btn btn-primary btn-sm" onclick="verDetalles(${producto.id})">
-                                                  <i class="fas fa-eye"></i> Ver detalles
-                                                </button>
+                                               
                                         </div>
                                     </div>
                                 </div>

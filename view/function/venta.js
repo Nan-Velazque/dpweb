@@ -147,42 +147,27 @@ async function buscar_cliente_venta() {
     if (dni.length !== 8) return alert('DNI inválido. Debe tener 8 dígitos');
 
     try {
-        // Primero consultar API externa por DNI
         const datos = new FormData();
         datos.append('dni', dni);
-        let respuesta = await fetch(base_url + 'control/consulta_dni.php', {
+        let respuesta = await fetch(base_url + 'control/usuarioController.php?tipo=buscar_cliente_dni', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
             body: datos
         });
         let json = await respuesta.json();
-        // la API devuelve numeroDocumento y nombres/apellidos
-        if (json && (json.numeroDocumento === dni || json.numeroDocumento == dni)) {
-            const nombreCompleto = `${json.nombres || json.nombre || ''} ${json.apellidoPaterno || ''} ${json.apellidoMaterno || ''}`.trim();
-            document.getElementById('cliente_nombre').value = nombreCompleto || '';
-            // luego intentar obtener el id en la BD local (si existe)
-            const datosLocal = new FormData();
-            datosLocal.append('dni', dni);
-            let respLocal = await fetch(base_url + 'control/usuarioController.php?tipo=obtener_usuario', {
-                method: 'POST',
-                mode: 'cors',
-                cache: 'no-cache',
-                body: datosLocal
-            });
-            let jsonLocal = await respLocal.json();
-            if (jsonLocal.status) {
-                document.getElementById('id_cliente_venta').value = jsonLocal.data.id;
-            } else {
-                // no existe en la BD local: dejar vacío para registrar luego si se desea
-                document.getElementById('id_cliente_venta').value = '';
-            }
+        if (json.status && json.data) {
+            document.getElementById('id_cliente_venta').value = json.data.id;
+            document.getElementById('cliente_nombre').value = json.data.razon_social || '';
+            alert('Cliente encontrado: ' + json.data.razon_social);
         } else {
-            alert('DNI no encontrado en el servicio externo');
+            alert('Cliente no encontrado en la base de datos');
+            document.getElementById('id_cliente_venta').value = '';
+            document.getElementById('cliente_nombre').value = '';
         }
     } catch (error) {
         console.log('error al buscar cliente por dni ' + error);
-        alert('Error al consultar DNI');
+        alert('Error al buscar cliente');
     }
 }
 

@@ -99,6 +99,7 @@ $base = defined('BASE_URL') ? BASE_URL : '/';
                                 </div>
                                 <div class="modal-body">
                                     <form id="form_venta">
+                                        <input type="hidden" id="id_cliente_venta" name="id_cliente_venta">
                                         <div class="mb-3">
                                             <label for="cliente_dni" class="form-label text-start d-block">DNI del cliente</label>
                                             <div class="row g-2">

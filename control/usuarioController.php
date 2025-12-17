@@ -163,6 +163,22 @@ if ($tipo == "mostrar_clientes") {
     exit;
 }
 
+if ($tipo == "buscar_cliente_dni") {
+    if (!isset($_POST['dni']) || empty($_POST['dni'])) {
+        echo json_encode(array('status' => false, 'msg' => 'Error, DNI vacío'));
+        exit;
+    }
+    $dni = $_POST['dni'];
+    $cliente = $objPersona->buscarClientePorDNI($dni);
+    header('Content-Type: application/json');
+    if($cliente){
+        echo json_encode(array('status' => true, 'data' => $cliente));
+    }else{
+        echo json_encode(array('status' => false, 'msg' => 'Cliente no encontrado'));
+    }
+    exit;
+}
+
 if ($tipo == "mostrar_proveedores") {
     $usuarios = $objPersona->mostrarProveedores();
     $respuesta = array();

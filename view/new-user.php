@@ -8,14 +8,23 @@
 
         <form id="frm_client" action="" method="">
             <div class="card-body">
-
+                
+                <div class="mb-3 row">
+                    <label for="nro_identidad" class="col-sm-3 col-form-label ">
+                        DNI
+                    </label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" id="nro_identidad" name="nro_identidad" required>
+                    </div>
+                </div>
 
                 <div class="mb-3 row">
                     <label for="razon_social" class="col-sm-3 col-form-label ">
                         Nombre/Razón Social
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="razon_social" name="razon_social" required>
+                        <input type="text" class="form-control" id="razon_social" name="razon_social" required
+                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
                     </div>
                 </div>
 
@@ -42,7 +51,8 @@
                        Departamento
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="departamento" name="departamento" required>
+                        <input type="text" class="form-control" id="departamento" name="departamento" required
+                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
                     </div>
                 </div>
 
@@ -51,7 +61,8 @@
                         Provincia
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="provincia" name="provincia" required>
+                        <input type="text" class="form-control" id="provincia" name="provincia" required
+                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
                     </div>
                 </div>
 
@@ -60,7 +71,8 @@
                         Distrito
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="distrito" name="distrito" required>
+                        <input type="text" class="form-control" id="distrito" name="distrito" required
+                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
                     </div>
                 </div>
 
